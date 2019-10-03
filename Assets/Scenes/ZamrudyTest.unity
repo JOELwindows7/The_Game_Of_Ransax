@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527732910}
   - component: {fileID: 1527732909}
+  - component: {fileID: 1527732911}
   m_Layer: 0
   m_Name: Prongk
   m_TagString: Untagged
@@ -297,3 +298,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1527732911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527732908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cd7a0578e86ca4bbecca957e15c081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
