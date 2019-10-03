@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCameraTesto : MonoBehaviour
+public class Prongk : MonoBehaviour
 {
-    public float Speedt = 10f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +13,10 @@ public class MoveCameraTesto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.right * Time.deltaTime * Speedt;
-
-        //Wait. why not move whole scene instead?
-        //wouldn't that be simpler and tidier?!
+        if (Input.GetMouseButtonDown(0))
+        {
+            //If Object myself is clicked
+            //do Explodos myself boom!
+        }
     }
 }
