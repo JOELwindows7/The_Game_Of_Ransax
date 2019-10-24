@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbstractUISet : MonoBehaviour
 {
+    public AbstractMenuVersionMember MainMenuVersion;
     // Start is called before the first frame update
     void Start()
     {

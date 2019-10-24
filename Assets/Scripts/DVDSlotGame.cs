@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DVDSlotGame : MonoBehaviour
 {
-
+    public DVDMember[] DVDMembers;
     // Start is called before the first frame update
     void Start()
     {

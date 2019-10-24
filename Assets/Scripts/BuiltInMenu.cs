@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class BuiltInMenu : MonoBehaviour
 {
+    public ChooseDVDMenu ChooseDvdMenu;
+    public CoreCanvas coreCanvas;
     public enum MenuScreenLists { MainMenu,Setting,Shop,Equip,GameLobby,GamePlay};
     public MenuScreenLists MenuScreenRightNow;
     public AbstractMenuVersionMember[] MenuVersionMembers;
+    public void PressQuitButton()
+    {
+        //ChooseDvdMenu.EjectDVDNumber();
+        coreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.ChangeDVD);
+    }
     private void Awake()
     {
         //foreach(GameObject MenuMembers in transform.ch)

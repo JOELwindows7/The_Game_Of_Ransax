@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CoreCanvas : MonoBehaviour
 {
-    [SerializeField] ChooseDVDMenu chooseDVDMenu;
-    [SerializeField] BuiltInMenu BuiltInMenu;
-    [SerializeField] DVDSlotUI DvdSlotUI;
-    [SerializeField] AreYouSureDialog areYouSureDialog;
+    public ChooseDVDMenu chooseDVDMenu;
+    public BuiltInMenu BuiltInMenu;
+    public DVDSlotUI DvdSlotUI;
+    public AreYouSureDialog areYouSureDialog;
+    public DVDSlotGame DVDSlotGame;
+    public int DVD_ID;
+    //public DVDMember[] DVDMembers;
+    //public AbstractUISet[] SpecificDVD_UI_Set;
     // Start is called before the first frame update
-    private void Awake()
+    public void initGame()
     {
         if (chooseDVDMenu)
         {
@@ -28,6 +32,20 @@ public class CoreCanvas : MonoBehaviour
             areYouSureDialog.gameObject.SetActive(false);
         }
     }
+    public void LoadDVDNow()
+    {
+        chooseDVDMenu.gameObject.SetActive(false);
+        BuiltInMenu.gameObject.SetActive(true);
+    }
+    public void UnloadDVDNow()
+    {
+        chooseDVDMenu.gameObject.SetActive(true);
+        BuiltInMenu.gameObject.SetActive(false);
+    }
+    private void Awake()
+    {
+        initGame();
+    }
     void Start()
     {
         
@@ -43,6 +61,10 @@ public class CoreCanvas : MonoBehaviour
     {
         areYouSureDialog.gameObject.SetActive(true);
     }
+    public void closeAreYouSureDialog()
+    {
+        areYouSureDialog.gameObject.SetActive(false);
+    }
 
     public void InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList SelectDialog)
     {
@@ -54,13 +76,15 @@ public class CoreCanvas : MonoBehaviour
     {
         Debug.Log("Shutdown Hexagon Engine initiated!");
         Application.Quit();
+        closeAreYouSureDialog();
     }
     public void GoBackToChangeDVD()
     {
-
+        chooseDVDMenu.EjectDVDNumber();
+        closeAreYouSureDialog();
     }
     public void GoBackToMainMenu()
     {
-
+        closeAreYouSureDialog();
     }
 }
