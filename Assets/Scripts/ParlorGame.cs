@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DVDSlotUI : MonoBehaviour
+public class ParlorGame : MonoBehaviour
 {
-    public AbstractUISet[] UISets;
+    public bool HasGameStarted = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!transform.parent)
+        {
+            HasGameStarted = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public void ReceiveInstructionGameStart(int GameIndex)
-    {
-
     }
 }

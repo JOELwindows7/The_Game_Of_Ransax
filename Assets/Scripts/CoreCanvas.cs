@@ -56,6 +56,14 @@ public class CoreCanvas : MonoBehaviour
     {
         
     }
+    public void InstructStartGame(int GameIndex)
+    {
+        DvdSlotUI.ReceiveInstructionGameStart(GameIndex);
+    }
+    public void InstructStopGame(int GameIndex)
+    {
+
+    }
 
     public void InvokeAreYouSureDialog()
     {

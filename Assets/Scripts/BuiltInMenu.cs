@@ -9,6 +9,10 @@ public class BuiltInMenu : MonoBehaviour
     public enum MenuScreenLists { MainMenu,Setting,Shop,Equip,GameLobby,GamePlay};
     public MenuScreenLists MenuScreenRightNow;
     public AbstractMenuVersionMember[] MenuVersionMembers;
+    public void PressPlayButton(int GameIndex)
+    {
+        coreCanvas.InstructStartGame(GameIndex);
+    }
     public void PressQuitButton()
     {
         //ChooseDvdMenu.EjectDVDNumber();
