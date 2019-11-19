@@ -19,6 +19,11 @@ public class DVDSlotUI : MonoBehaviour
 
     public void ReceiveInstructionGameStart(int GameIndex)
     {
+        UISets[GameIndex].StartTheGameplayUI();
+    }
 
+    public void ReceiveInstructionGameStop(int GameIndex)
+    {
+        UISets[GameIndex].StopTheGameplayUI();
     }
 }

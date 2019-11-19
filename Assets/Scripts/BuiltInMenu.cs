@@ -12,6 +12,7 @@ public class BuiltInMenu : MonoBehaviour
     public void PressPlayButton(int GameIndex)
     {
         coreCanvas.InstructStartGame(GameIndex);
+        gameObject.SetActive(false);
     }
     public void PressQuitButton()
     {

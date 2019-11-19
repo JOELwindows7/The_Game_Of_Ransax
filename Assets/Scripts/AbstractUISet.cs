@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbstractUISet : MonoBehaviour
 {
     public AbstractMenuVersionMember MainMenuVersion;
+    public AbstractGameplayUI AbstractGameplayUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,20 @@ public class AbstractUISet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StartTheGameplayUI()
+    {
+        if (AbstractGameplayUI)
+        {
+            AbstractGameplayUI.gameObject.SetActive(true);
+        }
+    }
+    public void StopTheGameplayUI()
+    {
+        if (AbstractGameplayUI)
+        {
+            AbstractGameplayUI.gameObject.SetActive(false);
+        }
     }
 }

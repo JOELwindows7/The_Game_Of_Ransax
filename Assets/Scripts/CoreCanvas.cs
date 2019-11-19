@@ -27,6 +27,10 @@ public class CoreCanvas : MonoBehaviour
         {
             DvdSlotUI.gameObject.SetActive(false);
         }
+        if (DVDSlotGame)
+        {
+            DVDSlotGame.gameObject.SetActive(false);
+        }
         if (areYouSureDialog)
         {
             areYouSureDialog.gameObject.SetActive(false);
@@ -36,11 +40,15 @@ public class CoreCanvas : MonoBehaviour
     {
         chooseDVDMenu.gameObject.SetActive(false);
         BuiltInMenu.gameObject.SetActive(true);
+        DVDSlotGame.gameObject.SetActive(true);
+        DvdSlotUI.gameObject.SetActive(true);
     }
     public void UnloadDVDNow()
     {
         chooseDVDMenu.gameObject.SetActive(true);
         BuiltInMenu.gameObject.SetActive(false);
+        DVDSlotGame.gameObject.SetActive(false);
+        DvdSlotUI.gameObject.SetActive(false);
     }
     private void Awake()
     {
@@ -59,10 +67,12 @@ public class CoreCanvas : MonoBehaviour
     public void InstructStartGame(int GameIndex)
     {
         DvdSlotUI.ReceiveInstructionGameStart(GameIndex);
+        DVDSlotGame.ReceiveInstructionGameStart(GameIndex);
     }
     public void InstructStopGame(int GameIndex)
     {
-
+        DvdSlotUI.ReceiveInstructionGameStop(GameIndex);
+        DVDSlotGame.ReceiveInstructionGameStop(GameIndex);
     }
 
     public void InvokeAreYouSureDialog()

@@ -16,4 +16,15 @@ public class DVDSlotGame : MonoBehaviour
     {
         
     }
+
+    public void ReceiveInstructionGameStart(int GameIndex)
+    {
+        Debug.Log("DVD Slot game start game");
+        DVDMembers[GameIndex].StartTheGameplayContains();
+    }
+
+    public void ReceiveInstructionGameStop(int GameIndex)
+    {
+        DVDMembers[GameIndex].StopTheGameplayContains();
+    }
 }
