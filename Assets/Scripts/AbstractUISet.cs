@@ -6,6 +6,8 @@ public class AbstractUISet : MonoBehaviour
 {
     public AbstractMenuVersionMember MainMenuVersion;
     public AbstractGameplayUI AbstractGameplayUI;
+    public AbstractShopUI AbstractShopUI;
+    public PreemptedDialog PreemptedDialog;
     // Start is called before the first frame update
     void Start()
     {
