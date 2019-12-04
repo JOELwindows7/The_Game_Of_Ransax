@@ -26,12 +26,20 @@ public class AbstractUISet : MonoBehaviour
         {
             AbstractGameplayUI.gameObject.SetActive(true);
         }
+        if (PreemptedDialog)
+        {
+            PreemptedDialog.IsGameStarted = true;
+        }
     }
     public void StopTheGameplayUI()
     {
         if (AbstractGameplayUI)
         {
             AbstractGameplayUI.gameObject.SetActive(false);
+        }
+        if (PreemptedDialog)
+        {
+            PreemptedDialog.IsGameStarted = false;
         }
     }
 }

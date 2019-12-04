@@ -16,6 +16,8 @@ public class ParlorSpecificUI : MonoBehaviour
     public TextMeshProUGUI AmmoText;
     public TextMeshProUGUI ScoreText;
 
+    public AbstractUISet AbstractUISet;
+
     public AbstractGameplayUI AbstractGameplayUI;
     public AbstractShopUI AbstractShopUI;
     public PreemptedDialog preemptedDialog;

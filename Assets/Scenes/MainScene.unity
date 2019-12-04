@@ -10748,6 +10748,7 @@ MonoBehaviour:
   HPBar: {fileID: 663256843}
   AmmoText: {fileID: 1416479717}
   ScoreText: {fileID: 1408793019}
+  AbstractUISet: {fileID: 1707963109}
   AbstractGameplayUI: {fileID: 767797100}
   AbstractShopUI: {fileID: 750611689}
   preemptedDialog: {fileID: 666068863}
