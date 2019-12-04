@@ -88,6 +88,9 @@ public class PreemptedDialog : MonoBehaviour
 
     public void PressQuitto()
     {
-
+        if (itselfEngine)
+        {
+            itselfEngine.InvokeCeaseTheGameAttemp();
+        }
     }
 }

@@ -22,6 +22,8 @@ public class ParlorSpecificUI : MonoBehaviour
     public AbstractShopUI AbstractShopUI;
     public PreemptedDialog preemptedDialog;
 
+    public CoreCanvas CoreCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,8 +68,8 @@ public class ParlorSpecificUI : MonoBehaviour
 
     public void UnFreezeTime()
     {
-        Time.timeScale = tempTimeScale;
-        //Time.timeScale = 1f;
+        //Time.timeScale = tempTimeScale;
+        Time.timeScale = 1f;
     }
 
     void SpawnPreemptedDialogAs()
@@ -82,5 +84,13 @@ public class ParlorSpecificUI : MonoBehaviour
     {
         preemptedDialog.PreemptedMode = WhatMode;
         SpawnPreemptedDialogAs();
+    }
+
+    public void InvokeCeaseTheGameAttemp()
+    {
+        if (CoreCanvas)
+        {
+            CoreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.BackToMenu);
+        }
     }
 }

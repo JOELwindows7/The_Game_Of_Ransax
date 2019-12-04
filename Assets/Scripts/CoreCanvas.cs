@@ -103,6 +103,7 @@ public class CoreCanvas : MonoBehaviour
     }
     public void GoBackToMainMenu()
     {
+        DvdSlotUI.ReceiveInstructionGameStop(DVD_ID);
         closeAreYouSureDialog();
     }
 }

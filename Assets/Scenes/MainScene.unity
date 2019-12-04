@@ -10752,6 +10752,7 @@ MonoBehaviour:
   AbstractGameplayUI: {fileID: 767797100}
   AbstractShopUI: {fileID: 750611689}
   preemptedDialog: {fileID: 666068863}
+  CoreCanvas: {fileID: 2017519032}
   tempTimeScale: 0
 --- !u!1 &1714824528
 GameObject:

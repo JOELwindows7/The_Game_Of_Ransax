@@ -37,9 +37,14 @@ public class AbstractUISet : MonoBehaviour
         {
             AbstractGameplayUI.gameObject.SetActive(false);
         }
+        if (MainMenuVersion)
+        {
+            MainMenuVersion.transform.parent.gameObject.SetActive(true);
+        }
         if (PreemptedDialog)
         {
             PreemptedDialog.IsGameStarted = false;
+            PreemptedDialog.gameObject.SetActive(false);
         }
     }
 }
