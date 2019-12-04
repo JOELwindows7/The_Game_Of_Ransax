@@ -4274,6 +4274,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0a4e3f597080d489a9c622e7fb5798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PreemptedMode: 0
+  itselfEngine: {fileID: 1707963110}
+  isGamePaused: 0
+  isGameStarted: 0
+  PreemptTitle: {fileID: 456164842}
+  PlayerHighScored: {fileID: 1973327286}
+  CurrentHighScored: {fileID: 1444533811}
+  RetryResumeButton: {fileID: 956983906}
+  QuittoButton: {fileID: 998571850}
 --- !u!1 &693466224
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,7 +5832,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 830567695}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1707963110}
+        m_MethodName: PauseTheGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &830567695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6407,8 +6427,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280365108}
-        m_MethodName: PressYesButton
+      - m_Target: {fileID: 666068863}
+        m_MethodName: PressRetryResume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7085,8 +7105,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280365108}
-        m_MethodName: PressNoButton
+      - m_Target: {fileID: 666068863}
+        m_MethodName: PressQuitto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10724,9 +10744,14 @@ MonoBehaviour:
   HPLevel: 0
   AmmoNumber: 0
   ScoreNumber: 0
+  isGamePaused: 0
   HPBar: {fileID: 663256843}
   AmmoText: {fileID: 1416479717}
   ScoreText: {fileID: 1408793019}
+  AbstractGameplayUI: {fileID: 767797100}
+  AbstractShopUI: {fileID: 750611689}
+  preemptedDialog: {fileID: 666068863}
+  tempTimeScale: 0
 --- !u!1 &1714824528
 GameObject:
   m_ObjectHideFlags: 0
