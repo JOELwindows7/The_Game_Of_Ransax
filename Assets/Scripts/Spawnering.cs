@@ -9,6 +9,9 @@ public class Spawnering : MonoBehaviour
     public float SpawnEverySecond = 5f;
     [SerializeField] float SpawnAgainTimer = 5f;
 
+    public float minRandom = 1f, maxRandom = 10f;
+    public bool useRandom = true;
+
     public bool activateSpawner = false;
     public ParlorGame parlorGameSystem;
 
@@ -38,6 +41,9 @@ public class Spawnering : MonoBehaviour
             else
             {
                 Instantiate(PrefabToList[Random.Range(0, PrefabToList.Length)], transform.position, Quaternion.identity, transform.parent);
+                if(useRandom){
+                    SpawnEverySecond = Random.Range(minRandom,maxRandom);
+                }
                 SpawnAgainTimer = SpawnEverySecond;
             }
         }

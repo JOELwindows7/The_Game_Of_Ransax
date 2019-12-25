@@ -7,3 +7,6 @@ Make Fun of Casual
 # Uh
 
 uh
+
+# Credit
+https://www.youtube.com/watch?v=epRPKFsOPck bekgron scrolling

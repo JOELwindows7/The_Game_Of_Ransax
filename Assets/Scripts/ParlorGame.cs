@@ -6,6 +6,7 @@ public class ParlorGame : MonoBehaviour
 {
     public bool HasGameStarted = false;
     public FieldContains FieldContains;
+    public BekgronQuadScroller bekgronding;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,13 @@ public class ParlorGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(HasGameStarted){
+            //bekgronding.xVelocity = .5f;
+            bekgronding.SwitchOn();
+        } else {
+            //bekgronding.xVelocity = 0f;
+            bekgronding.SwitchOff();
+        }
     }
 
     public void ResetObjects()
