@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuiltInMenu : MonoBehaviour
 {
+    [SerializeField] int GameIndexIsRightNow = 0;
     public ChooseDVDMenu ChooseDvdMenu;
     public CoreCanvas coreCanvas;
     public enum MenuScreenLists { MainMenu,Setting,Shop,Equip,GameLobby,GamePlay};
@@ -12,6 +13,10 @@ public class BuiltInMenu : MonoBehaviour
     public void PressPlayButton(int GameIndex)
     {
         coreCanvas.InstructStartGame(GameIndex);
+        gameObject.SetActive(false);
+    }
+    public void OpenShopMenu(int GameIndex){
+        coreCanvas.OpenShopMenu(GameIndex);
         gameObject.SetActive(false);
     }
     public void PressQuitButton()

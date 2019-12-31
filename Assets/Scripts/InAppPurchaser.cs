@@ -30,7 +30,7 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
     // Google Play Store-specific product identifier subscription product.
     //private static string kProductNameGooglePlaySubscription =  "com.unity3d.subscription.original"; 
 
-    public static string DONATE_BUTTON = "DONATE_BUTTON";
+    public string DONATE_BUTTON = "DONATE_BUTTON"; //remove static to make it repeatable in singleton
 
     void Start()
     {
@@ -67,7 +67,7 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
         //     { kProductNameAppleSubscription, AppleAppStore.Name },
         //     { kProductNameGooglePlaySubscription, GooglePlay.Name },
         // });
-        builder.AddProduct(DONATE_BUTTON, ProductType.NonConsumable);
+        builder.AddProduct(DONATE_BUTTON, ProductType.Consumable);
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -75,7 +75,7 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
     }
 
 
-    private bool IsInitialized()
+    public bool IsInitialized()
     {
         // Only say we are initialized if both the Purchasing references are set.
         return m_StoreController != null && m_StoreExtensionProvider != null;
@@ -111,7 +111,13 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
         BuyProductID(DONATE_BUTTON);
     }
 
-    
+    public string GetProductPriceFromStore(string id){
+        if(m_StoreController!=null && m_StoreController.products !=null){
+            return m_StoreController.products.WithID(id).metadata.localizedPriceString;
+        } else {
+            return "";
+        }
+    }
 
 
     void BuyProductID(string productId)
@@ -236,6 +242,7 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
 
             //todo
+            Kixlonzing.Instance.AddKixlonz(20);
         }
         else 
         {

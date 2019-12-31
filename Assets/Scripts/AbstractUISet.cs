@@ -11,13 +11,21 @@ public class AbstractUISet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(AbstractShopUI){
+            AbstractShopUI.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OpenShopMenu(){
+        if(AbstractShopUI){
+            AbstractShopUI.gameObject.SetActive(true);
+        }
     }
 
     public void StartTheGameplayUI()
@@ -45,6 +53,20 @@ public class AbstractUISet : MonoBehaviour
         {
             PreemptedDialog.IsGameStarted = false;
             PreemptedDialog.gameObject.SetActive(false);
+        }
+    }
+
+    public void BackToMenu(){
+        if(AbstractShopUI){
+            AbstractShopUI.gameObject.SetActive(false);
+        }
+        if (AbstractGameplayUI)
+        {
+            AbstractGameplayUI.gameObject.SetActive(false);
+        }
+        if (MainMenuVersion)
+        {
+            MainMenuVersion.transform.parent.gameObject.SetActive(true);
         }
     }
 }

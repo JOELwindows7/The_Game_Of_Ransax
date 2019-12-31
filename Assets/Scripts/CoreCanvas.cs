@@ -75,6 +75,10 @@ public class CoreCanvas : MonoBehaviour
         DVDSlotGame.ReceiveInstructionGameStop(GameIndex);
     }
 
+    public void OpenShopMenu(int GameIndex){
+        DvdSlotUI.OpenShopMenu(GameIndex);
+    }
+
     public void InvokeAreYouSureDialog()
     {
         areYouSureDialog.gameObject.SetActive(true);
@@ -105,5 +109,9 @@ public class CoreCanvas : MonoBehaviour
     {
         DvdSlotUI.ReceiveInstructionGameStop(DVD_ID);
         closeAreYouSureDialog();
+    }
+
+    public void JustBackToMainMenu(){
+        DvdSlotUI.GoBackToMenu(DVD_ID);
     }
 }
