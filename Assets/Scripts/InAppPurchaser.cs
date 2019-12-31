@@ -31,6 +31,9 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
     //private static string kProductNameGooglePlaySubscription =  "com.unity3d.subscription.original"; 
 
     public string DONATE_BUTTON = "DONATE_BUTTON"; //remove static to make it repeatable in singleton
+    public string DestroyAd = "DestroyAd";
+    public string Slower = "Slower";
+    public string ExtendBullet = "ExtendBullet";
 
     void Start()
     {
@@ -68,6 +71,9 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
         //     { kProductNameGooglePlaySubscription, GooglePlay.Name },
         // });
         builder.AddProduct(DONATE_BUTTON, ProductType.Consumable);
+        builder.AddProduct(DestroyAd, ProductType.NonConsumable);
+        //builder.AddProduct(Slower, ProductType.NonConsumable);
+        builder.AddProduct(ExtendBullet,ProductType.NonConsumable);
 
         // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
         // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
@@ -109,6 +115,12 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
 
     public void DonateToMe(){
         BuyProductID(DONATE_BUTTON);
+    }
+    public void ExtendBulletNow(){
+        BuyProductID(ExtendBullet);
+    }
+    public void DestroyAdNow(){
+        BuyProductID(DestroyAd);
     }
 
     public string GetProductPriceFromStore(string id){
@@ -243,6 +255,18 @@ public class InAppPurchaser : Singleton<InAppPurchaser>, IStoreListener
 
             //todo
             Kixlonzing.Instance.AddKixlonz(20);
+        }
+        if(String.Equals(args.purchasedProduct.definition.id, ExtendBullet, StringComparison.Ordinal)){
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            Kixlonzing.Instance.AddKixlonz(5);
+
+            //ExtendTheBullet
+        }
+        if(String.Equals(args.purchasedProduct.definition.id, DestroyAd, StringComparison.Ordinal)){
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            Kixlonzing.Instance.AddKixlonz(5);
+
+            //DestroyAd
         }
         else 
         {
