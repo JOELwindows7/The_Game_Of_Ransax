@@ -14,6 +14,9 @@ public class AbstractUISet : MonoBehaviour
         if(AbstractShopUI){
             AbstractShopUI.gameObject.SetActive(false);
         }
+        if(AbstractGameplayUI){
+            AbstractGameplayUI.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

@@ -12,7 +12,8 @@ public class ParlorSpecificUI : MonoBehaviour
 
     public bool isGamePaused = false;
 
-    public Slider HPBar;
+    //public Slider HPBar;
+    public MeterBar HPmeter;
     public TextMeshProUGUI AmmoText;
     public TextMeshProUGUI ScoreText;
 
@@ -33,9 +34,22 @@ public class ParlorSpecificUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HPBar.value = HPLevel;
+        //HPBar.value = HPLevel;
+        HPmeter.value = HPLevel;
         AmmoText.text = AmmoNumber.ToString();
         ScoreText.text = ScoreNumber.ToString();
+
+        if(HPLevel>=100){
+            HPmeter.barColor = Color.blue;
+        } else if(HPLevel >=50f && HPLevel<100f){
+            HPmeter.barColor = Color.green;
+        } else if(HPLevel >=25f && HPLevel<50f){
+            HPmeter.barColor = Color.yellow;
+        } else if(HPLevel >=0f && HPLevel<25f){
+            HPmeter.barColor = Color.red;
+        } else if(HPLevel < 0){
+            HPmeter.barColor = Color.black; //Zombie
+        }
     }
 
     public void PauseTheGame()
@@ -47,6 +61,13 @@ public class ParlorSpecificUI : MonoBehaviour
         SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Paused);
         FreezeTime();
         isGamePaused = true;
+    }
+    public void OverTheGame(){
+        if (preemptedDialog)
+        {
+            preemptedDialog.IsGamePaused = true;
+        }
+        SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Game_Over);
     }
 
     public void ResumeTheGame()

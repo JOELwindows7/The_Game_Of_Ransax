@@ -249,7 +249,9 @@ GameObject:
   - component: {fileID: 4380306978478996911}
   - component: {fileID: 8950474894957147666}
   - component: {fileID: 990874370299615352}
-  m_Layer: 0
+  - component: {fileID: 26138762292073535}
+  - component: {fileID: 5195902975232881194}
+  m_Layer: 20
   m_Name: QuadBekgron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,6 +335,54 @@ MonoBehaviour:
   offseting: {x: 0, y: 0}
   xVelocity: 1
   yVelocity: 0
+  ScrollSpeed: 0.5
+--- !u!61 &26138762292073535
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433923842526984889}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &5195902975232881194
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433923842526984889}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4578386931563685190
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +729,9 @@ MonoBehaviour:
   HasGameStarted: 0
   FieldContains: {fileID: 1803127629003713392}
   bekgronding: {fileID: 990874370299615352}
+  parlorSpecificUI: {fileID: 0}
+  HPinit: 5
+  HPnumber: 5
   spawnerings:
   - {fileID: 4578386932108867991}
 --- !u!1 &4927383653128634343

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class TargetShootBehaviour : MonoBehaviour
 {
+    public AudioClip soundFile;
     public float MoveLeftSpeed = 10f;
     public float MoveUpSpeed = 0f;
     // Start is called before the first frame update
@@ -22,6 +24,8 @@ public class TargetShootBehaviour : MonoBehaviour
     void TargetHit()
     {
         Destroy(gameObject);
+        if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, .5f);
+        HitOrMiss.Instance.Hit();
     }
 
     private void OnMouseDown()

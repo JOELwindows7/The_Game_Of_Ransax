@@ -46,7 +46,9 @@ public class FieldContains : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         objectTarget = collision.gameObject;
-        aTarget = collision.gameObject.GetComponent<TargetShootBehaviour>();
-        Destroy(aTarget.gameObject);
+        if(objectTarget){ 
+            aTarget = objectTarget.GetComponent<TargetShootBehaviour>();
+            Destroy(aTarget.gameObject);
+        }
     }
 }

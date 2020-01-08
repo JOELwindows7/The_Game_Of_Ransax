@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BekgronQuadScroller : MonoBehaviour
 {
-
+    public AudioClip soundFile;
     [SerializeField] Material materialingBekgron;
     [SerializeField] Vector2 offseting;
 
@@ -34,5 +35,19 @@ public class BekgronQuadScroller : MonoBehaviour
     void Update()
     {
         materialingBekgron.mainTextureOffset += offseting * Time.deltaTime;
+    }
+
+    private void MissHit(){
+        if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
+        else {
+            
+        }
+        HitOrMiss.Instance.Miss(); //Huh
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("Miss!");
+        MissHit();
     }
 }

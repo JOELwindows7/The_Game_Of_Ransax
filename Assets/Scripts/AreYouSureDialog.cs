@@ -60,7 +60,7 @@ public class AreYouSureDialog : MonoBehaviour
                 toDoSomething = "Shutdown Hexagon Unity Framework";
                 break;
             case ConfirmsList.ChangeDVD:
-                toDoSomething = "Change Game";
+                toDoSomething = "Exit this game";
                 break;
             case ConfirmsList.BackToMenu:
                 toDoSomething = "Quit to Menu";
