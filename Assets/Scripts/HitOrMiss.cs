@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitOrMiss : Singleton<HitOrMiss>
 {
     public ParlorGame targetParlor;
+    public float BulletAmmoNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class HitOrMiss : Singleton<HitOrMiss>
     // Update is called once per frame
     void Update()
     {
-        
+        BulletAmmoNumber = targetParlor.BulletAmmo1;
     }
 
     //Miss ya

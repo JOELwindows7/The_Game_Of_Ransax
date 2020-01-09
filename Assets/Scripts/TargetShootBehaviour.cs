@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class TargetShootBehaviour : MonoBehaviour
 {
     public AudioClip soundFile;
+    public GameObject ParticleExplode;
     public float MoveLeftSpeed = 10f;
     public float MoveUpSpeed = 0f;
     // Start is called before the first frame update
@@ -23,14 +24,24 @@ public class TargetShootBehaviour : MonoBehaviour
 
     void TargetHit()
     {
-        Destroy(gameObject);
-        if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, .5f);
-        HitOrMiss.Instance.Hit();
+        if(HitOrMiss.Instance.BulletAmmoNumber > 0f){
+            Destroy(gameObject);
+            if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, .5f);
+            if(ParticleExplode) {
+                Instantiate(ParticleExplode, transform.position, Quaternion.identity, transform.parent);
+            }
+            HitOrMiss.Instance.Hit();
+        }
+        else {
+            Debug.Log("Out of Ammo!");
+        }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Bang!");
-        TargetHit();
+        if(!TimeManagement.Instance.IsTimeFrozen){
+            Debug.Log("Bang!");
+            TargetHit();
+        }
     }
 }

@@ -8,12 +8,16 @@ public class ParlorSpecificUI : MonoBehaviour
 {
     [Range(0f, 100f)] public float HPLevel = 100f;
     public int AmmoNumber;
+    public int AmmoMax;
     public float ScoreNumber;
+    public float HiScoredNumber;
+    public float CurrentHiScored;
 
     public bool isGamePaused = false;
 
     //public Slider HPBar;
     public MeterBar HPmeter;
+    public AmunitionBar AmunitionThing;
     public TextMeshProUGUI AmmoText;
     public TextMeshProUGUI ScoreText;
 
@@ -25,6 +29,12 @@ public class ParlorSpecificUI : MonoBehaviour
 
     public CoreCanvas CoreCanvas;
 
+    public ParlorGame ItselfGame;
+
+
+    void Awake(){
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +46,15 @@ public class ParlorSpecificUI : MonoBehaviour
     {
         //HPBar.value = HPLevel;
         HPmeter.value = HPLevel;
-        AmmoText.text = AmmoNumber.ToString();
+        AmunitionThing.AmmoNumber = AmmoNumber;
+        AmunitionThing.MaxAmmo = AmmoMax;
+        //AmunitionThing.SetAmmoTextNumber(AmmoNumber);
+        //AmmoText.text = AmmoNumber.ToString();
         ScoreText.text = ScoreNumber.ToString();
+        if(preemptedDialog){
+            preemptedDialog.PlayerHighScored.text = HiScoredNumber.ToString();
+            preemptedDialog.CurrentHighScored.text = CurrentHiScored.ToString();
+        }
 
         if(HPLevel>=100){
             HPmeter.barColor = Color.blue;
@@ -59,39 +76,50 @@ public class ParlorSpecificUI : MonoBehaviour
             preemptedDialog.IsGamePaused = true;
         }
         SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Paused);
-        FreezeTime();
+        TimeManagement.Instance. FreezeTime();
         isGamePaused = true;
     }
     public void OverTheGame(){
         if (preemptedDialog)
         {
-            preemptedDialog.IsGamePaused = true;
+            //preemptedDialog.IsGamePaused = true;
         }
         SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Game_Over);
     }
 
+    public void StartTheGame(){
+        // if(ItselfGame){
+        //     ItselfGame.StartTheGameNow();
+        // }
+        if(CoreCanvas){
+            CoreCanvas.InstructStartGame(0);
+        }
+        TimeManagement.Instance.UnFreezeTime();
+        isGamePaused = false;
+    }
     public void ResumeTheGame()
     {
         if (preemptedDialog)
         {
             preemptedDialog.IsGamePaused = false;
         }
-        UnFreezeTime();
+        TimeManagement.Instance. UnFreezeTime();
         isGamePaused = false;
     }
 
-    [SerializeField] float tempTimeScale;
-    public void FreezeTime()
-    {
-        tempTimeScale = Time.timeScale;
-        Time.timeScale = 0f;
-    }
+    // [SerializeField] float tempTimeScale;
+    // public void FreezeTime()
+    // {
+    //     tempTimeScale = Time.timeScale;
+    //     Time.timeScale = 0f;
+    // }
 
-    public void UnFreezeTime()
-    {
-        //Time.timeScale = tempTimeScale;
-        Time.timeScale = 1f;
-    }
+    // public void UnFreezeTime()
+    // {
+    //     //Time.timeScale = tempTimeScale;
+    //     Time.timeScale = 1f;
+    //     Debug.Log("Unfreeze Time");
+    // }
 
     void SpawnPreemptedDialogAs()
     {
@@ -113,5 +141,9 @@ public class ParlorSpecificUI : MonoBehaviour
         {
             CoreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.BackToMenu);
         }
+    }
+
+    public void GoReload(){
+        ItselfGame.BulletReload();
     }
 }

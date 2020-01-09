@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &740806835487420767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6426965715459400135}
+  - component: {fileID: 8187032226352700235}
+  m_Layer: 0
+  m_Name: Spawnering (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6426965715459400135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740806835487420767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13, y: -2.5, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4578386931618232034}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8187032226352700235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740806835487420767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af608bc5cc398b4ba0c0d6c9e787002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabToList:
+  - {fileID: 2256061989581747339, guid: 80702d5d9d1fb864caeb6ff442c3c15e, type: 3}
+  - {fileID: 60708990668837021, guid: ffa8652e1f7cfb149825a88f44dbb234, type: 3}
+  SpawnEverySecond: 9
+  SpawnAgainTimer: 5
+  minRandom: 1
+  maxRandom: 10
+  useRandom: 1
+  activateSpawner: 0
+  parlorGameSystem: {fileID: 4578386932300914558}
 --- !u!1 &781067437221771508
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +78,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781067437221771508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5, y: -3, z: 1}
+  m_LocalPosition: {x: 11.5, y: -1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4578386931618232034}
@@ -249,8 +302,8 @@ GameObject:
   - component: {fileID: 4380306978478996911}
   - component: {fileID: 8950474894957147666}
   - component: {fileID: 990874370299615352}
-  - component: {fileID: 26138762292073535}
   - component: {fileID: 5195902975232881194}
+  - component: {fileID: 7362218603278166330}
   m_Layer: 20
   m_Name: QuadBekgron
   m_TagString: Untagged
@@ -298,7 +351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3813d901020b3d94198f0a733eb3f7b7, type: 2}
+  - {fileID: 2100000, guid: f0a918d8fc838ea43ac74c052d6af40b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -331,37 +384,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9eb533f0b396748abee317ffd1a7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engineSelf: {fileID: 0}
+  soundFile: {fileID: 0}
   materialingBekgron: {fileID: 0}
   offseting: {x: 0, y: 0}
   xVelocity: 1
   yVelocity: 0
   ScrollSpeed: 0.5
---- !u!61 &26138762292073535
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4433923842526984889}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &5195902975232881194
 Rigidbody2D:
   serializedVersion: 4
@@ -383,6 +412,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &7362218603278166330
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433923842526984889}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.07107651, y: 0.49654266}
+      - {x: 0.070260495, y: 0.36418968}
+      - {x: -0.069831654, y: 0.36540037}
+      - {x: -0.070014805, y: 0.4959278}
+      - {x: -0.497711, y: 0.50388706}
+      - {x: -0.49827817, y: -0.3515007}
+      - {x: -0.07234521, y: -0.35392818}
+      - {x: -0.07367273, y: -0.493011}
+      - {x: 0.061559044, y: -0.49381223}
+      - {x: 0.06155071, y: -0.35407335}
+      - {x: 0.4979741, y: -0.3579247}
+      - {x: 0.49798468, y: 0.4976053}
 --- !u!1 &4578386931563685190
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +583,7 @@ Transform:
   - {fileID: 484552355150112281}
   - {fileID: 2935745023842264245}
   - {fileID: 4185256178414561392}
+  - {fileID: 6426965715459400135}
   m_Father: {fileID: 4578386931563685209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -730,8 +797,16 @@ MonoBehaviour:
   FieldContains: {fileID: 1803127629003713392}
   bekgronding: {fileID: 990874370299615352}
   parlorSpecificUI: {fileID: 0}
+  core: {fileID: 0}
   HPinit: 5
   HPnumber: 5
+  HPfloat: 0
+  BulletInit: 10
+  BulletAmmo: 10
+  BulletFloat: 10
+  ScoreYeah: 0
+  HiScoreFirst: 0
+  InGameHiScore: 0
   spawnerings:
   - {fileID: 4578386932108867991}
 --- !u!1 &4927383653128634343
@@ -905,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7335629340494993732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5, y: 2, z: 0}
+  m_LocalPosition: {x: 11.5, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4578386931618232034}

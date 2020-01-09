@@ -15,6 +15,8 @@ public class CoreCanvas : MonoBehaviour
     // Start is called before the first frame update
     public void initGame()
     {
+        //Time.timeScale = 1f;
+        TimeManagement.Instance.UnFreezeTime();
         if (chooseDVDMenu)
         {
             chooseDVDMenu.gameObject.SetActive(true);
@@ -73,6 +75,11 @@ public class CoreCanvas : MonoBehaviour
     {
         DvdSlotUI.ReceiveInstructionGameStop(GameIndex);
         DVDSlotGame.ReceiveInstructionGameStop(GameIndex);
+        Debug.Log("Instruct Stop Game");
+    }
+
+    public void InstructGameOver(int GameIndex){
+
     }
 
     public void OpenShopMenu(int GameIndex){
@@ -104,11 +111,14 @@ public class CoreCanvas : MonoBehaviour
     {
         chooseDVDMenu.EjectDVDNumber();
         closeAreYouSureDialog();
+        Advertiser.Instance.ShowAd();
     }
     public void GoBackToMainMenu()
     {
-        DvdSlotUI.ReceiveInstructionGameStop(DVD_ID);
+        //DvdSlotUI.ReceiveInstructionGameStop(DVD_ID);
+        InstructStopGame(DVD_ID);
         closeAreYouSureDialog();
+        Advertiser.Instance.ShowAd();
     }
 
     public void JustBackToMainMenu(){

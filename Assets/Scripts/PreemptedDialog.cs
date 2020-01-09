@@ -77,8 +77,9 @@ public class PreemptedDialog : MonoBehaviour
                 //Retry Button
                 if (itselfEngine)
                 {
+                    Debug.Log("Retrye");
                     //Retrye FUnction
-
+                    itselfEngine.StartTheGame();
 
                     gameObject.SetActive(false);
                 }

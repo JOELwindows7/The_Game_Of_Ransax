@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 
 public class BekgronQuadScroller : MonoBehaviour
 {
+    public ParlorGame engineSelf;
     public AudioClip soundFile;
     [SerializeField] Material materialingBekgron;
     [SerializeField] Vector2 offseting;
@@ -22,6 +23,9 @@ public class BekgronQuadScroller : MonoBehaviour
 
     void Awake(){
         materialingBekgron = GetComponent<Renderer>().material;
+        if(!engineSelf){
+            engineSelf = transform.parent.GetComponent<ParlorGame>();
+        }
     }
 
     // Start is called before the first frame update
@@ -38,16 +42,29 @@ public class BekgronQuadScroller : MonoBehaviour
     }
 
     private void MissHit(){
-        if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
-        else {
+        // if(engineSelf){
+        //     if(engineSelf.BulletAmmo1 > 0){
+        //         if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
+        //         else {
             
+        //         }
+        //         HitOrMiss.Instance.Miss(); //Huh
+        //     }
+        // }
+        if(HitOrMiss.Instance.BulletAmmoNumber > 0f){
+            if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
+            else {
+            
+            }
+            HitOrMiss.Instance.Miss(); //Huh
         }
-        HitOrMiss.Instance.Miss(); //Huh
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Miss!");
-        MissHit();
+        if(!TimeManagement.Instance.IsTimeFrozen){
+            Debug.Log("Miss!");
+            MissHit();
+        }
     }
 }

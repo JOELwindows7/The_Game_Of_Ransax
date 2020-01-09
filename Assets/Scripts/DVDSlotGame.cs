@@ -25,6 +25,7 @@ public class DVDSlotGame : MonoBehaviour
 
     public void ReceiveInstructionGameStop(int GameIndex)
     {
+        Debug.Log("DVD slot game stop game");
         DVDMembers[GameIndex].StopTheGameplayContains();
     }
 }

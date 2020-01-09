@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFile: {fileID: 8300000, guid: 3b8bbc7e28a3be3438a2961fcd1a834c, type: 3}
+  ParticleExplode: {fileID: 3474926330458242290, guid: 2b3a31b55631452498124fd0dbe638e9,
+    type: 3}
   MoveLeftSpeed: 3
   MoveUpSpeed: 0
 --- !u!60 &7672636109048011725
