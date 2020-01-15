@@ -1,10 +1,11 @@
 Parlor. The family friendly circus carnival shooting galery game.
-Joel Robert Justiawan 2101629672 = Lead, Programmer
-Septesen NIM = Artist
-Billy Husada NIM = UI & Game Design
-Vincent Thamrin = Artist
-Mangku Widodo = Audio, Programmer
-Denni Joandi = Game Design, Artist (Yah! kok jebol sih?!)
+Joel Robert Justiawan (2101629672) = Lead, Programmer
+Septesen (2101689311) = Artist
+Billy Husada (2101638531) = UI & Game Design
+Vincent Thamrin (2101693246) = Artist
+Mangku Widodo (1801383682) = Audio, Programmer
+Denni Joandi (2101650543) = Game Design, Artist (Yah! kok jebol absen sih?! Sayang, donk! SADD)
+Yudhistira Rizqi Hersanda (2101653324) = Audio
 
 Using assets:
 Vincent Thamrin original drawn wepons
