@@ -6,6 +6,12 @@ using UnityEngine.Audio;
 public class TargetShootBehaviour : MonoBehaviour
 {
     public AudioClip soundFile;
+    public AudioClip[] MultiSoundFilesAtOnce;
+    public AudioClip[] MultiSoundFilesRandomly;
+    [Range(0f,10f)] public float VolumeOut = 1f;
+    public bool PlaySoundFile = true;
+    public bool PlayMultiAtOnce = false;
+    public bool PlayMultiRandomly = false;
     public GameObject ParticleExplode;
     public float MoveLeftSpeed = 10f;
     public float MoveUpSpeed = 0f;
@@ -26,7 +32,17 @@ public class TargetShootBehaviour : MonoBehaviour
     {
         if(HitOrMiss.Instance.BulletAmmoNumber > 0f){
             Destroy(gameObject);
-            if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, .5f);
+            if(soundFile && PlaySoundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, VolumeOut);
+            if(PlayMultiAtOnce){
+                foreach(AudioClip sounds in MultiSoundFilesAtOnce){
+                    if(sounds) ExternalSpeaker.Instance.FlashSoundEffect(sounds,VolumeOut);
+                }
+            }
+            if(PlayMultiRandomly){
+                AudioClip TempoAudio = MultiSoundFilesRandomly[Random.Range(0, MultiSoundFilesRandomly.Length)];
+                if(TempoAudio) ExternalSpeaker.Instance.FlashSoundEffect(TempoAudio, VolumeOut);
+            }
+
             if(ParticleExplode) {
                 Instantiate(ParticleExplode, transform.position, Quaternion.identity, transform.parent);
             }
@@ -44,4 +60,6 @@ public class TargetShootBehaviour : MonoBehaviour
             TargetHit();
         }
     }
+
+    //Todo mouse held rapid fire
 }

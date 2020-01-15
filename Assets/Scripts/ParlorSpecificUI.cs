@@ -31,6 +31,7 @@ public class ParlorSpecificUI : MonoBehaviour
 
     public ParlorGame ItselfGame;
 
+    public Text PauseText;
 
     void Awake(){
 
@@ -67,22 +68,35 @@ public class ParlorSpecificUI : MonoBehaviour
         } else if(HPLevel < 0){
             HPmeter.barColor = Color.black; //Zombie
         }
+
+        if(PauseText){
+            if(ItselfGame.HasGameStarted){
+                PauseText.text = "PAUSE";
+            } else {
+
+            }
+        }
     }
 
     public void PauseTheGame()
     {
-        if (preemptedDialog)
-        {
-            preemptedDialog.IsGamePaused = true;
+        if(ItselfGame.HasGameStarted){
+            if (preemptedDialog)
+            {
+                preemptedDialog.IsGamePaused = true;
+            }
+            SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Paused);
+            TimeManagement.Instance. FreezeTime();
+            isGamePaused = true;
         }
-        SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Paused);
-        TimeManagement.Instance. FreezeTime();
-        isGamePaused = true;
     }
     public void OverTheGame(){
         if (preemptedDialog)
         {
             //preemptedDialog.IsGamePaused = true;
+        }
+        if(PauseText){
+            PauseText.text = "RESURRECT\n(WATCH AD)";
         }
         SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Game_Over);
     }
@@ -96,6 +110,9 @@ public class ParlorSpecificUI : MonoBehaviour
         }
         TimeManagement.Instance.UnFreezeTime();
         isGamePaused = false;
+        if(PauseText){
+            PauseText.text = "PAUSE";
+        }
     }
     public void ResumeTheGame()
     {

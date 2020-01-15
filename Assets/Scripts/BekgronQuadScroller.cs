@@ -67,4 +67,6 @@ public class BekgronQuadScroller : MonoBehaviour
             MissHit();
         }
     }
+
+    //Todo Rapidfire on mouse held
 }

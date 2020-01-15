@@ -20,6 +20,12 @@ public class DVDSlotUI : MonoBehaviour
     public void OpenShopMenu(int GameIndex){
         UISets[GameIndex].OpenShopMenu();
     }
+    public void OpenCreditMenu(int GameIndex){
+        UISets[GameIndex].OpenCreditMenu();
+    }
+    public void OpenInstructionMenu(int GameIndex){
+        UISets[GameIndex].OpenInstructionMenu();
+    }
 
     public void GoBackToMenu(int GameIndex){
         UISets[GameIndex].BackToMenu();

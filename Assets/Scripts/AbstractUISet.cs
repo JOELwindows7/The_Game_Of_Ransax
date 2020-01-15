@@ -6,6 +6,8 @@ public class AbstractUISet : MonoBehaviour
 {
     public AbstractMenuVersionMember MainMenuVersion;
     public AbstractGameplayUI AbstractGameplayUI;
+    public AbstractCreditUI AbstractCreditUI;
+    public AbstractInstructionUI AbstractInstructionUI;
     public AbstractShopUI AbstractShopUI;
     public PreemptedDialog PreemptedDialog;
     // Start is called before the first frame update
@@ -16,6 +18,12 @@ public class AbstractUISet : MonoBehaviour
         }
         if(AbstractGameplayUI){
             AbstractGameplayUI.gameObject.SetActive(false);
+        }
+        if (AbstractCreditUI){
+            AbstractCreditUI.gameObject.SetActive(false);
+        }
+        if(AbstractInstructionUI){
+            AbstractInstructionUI.gameObject.SetActive(false);
         }
     }
 
@@ -28,6 +36,16 @@ public class AbstractUISet : MonoBehaviour
     public void OpenShopMenu(){
         if(AbstractShopUI){
             AbstractShopUI.gameObject.SetActive(true);
+        }
+    }
+    public void OpenCreditMenu(){
+        if(AbstractCreditUI){
+            AbstractCreditUI.gameObject.SetActive(true);
+        }
+    }
+    public void OpenInstructionMenu(){
+        if(AbstractInstructionUI){
+            AbstractInstructionUI.gameObject.SetActive(true);
         }
     }
 
@@ -67,9 +85,19 @@ public class AbstractUISet : MonoBehaviour
         {
             AbstractGameplayUI.gameObject.SetActive(false);
         }
+        if (AbstractCreditUI){
+            AbstractCreditUI.gameObject.SetActive(false);
+        }
+        if(AbstractInstructionUI){
+            AbstractInstructionUI.gameObject.SetActive(false);
+        }
         if (MainMenuVersion)
         {
             MainMenuVersion.transform.parent.gameObject.SetActive(true);
         }
+
+        Debug.Log("Abstract UI back to Menu");
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
     }
 }

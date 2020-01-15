@@ -1,0 +1,37 @@
+Parlor. The family friendly circus carnival shooting galery game.
+Joel Robert Justiawan 2101629672 = Lead, Programmer
+Septesen NIM = Artist
+Billy Husada NIM = UI & Game Design
+Vincent Thamrin = Artist
+Mangku Widodo = Audio, Programmer
+Denni Joandi = Game Design, Artist (Yah! kok jebol sih?!)
+
+Using assets:
+Vincent Thamrin original drawn wepons
+https://freesound.org/people/qubodup/sounds/222373/
+https://freesound.org/people/Gniffelbaf/sounds/82109/
+https://freesound.org/people/kevinkace/sounds/66770/
+https://freesound.org/people/kyles/sounds/452596/
+https://www.freepik.com/free-vector/seamless-background-with-flowers-garden_1250798.htm
+https://www.freepik.com/free-vector/isolated-nature-decor_3875002.htm#page=1&query=garden%20pattern
+https://www.freepik.com/free-vector/seamless-scene-with-trees-park_4866970.htm#page=1&query=garden%20seamless
+
+Reference:
+https://support.unity3d.com/hc/en-us/articles/115000341143-How-do-I-read-and-write-data-from-a-text-file-
+https://www.youtube.com/watch?v=epRPKFsOPck bekgron scrollin
+https://www.youtube.com/watch?v=DWmD1RRORfc&t=290s
+https://docs.unity3d.com/ Oh no! I forgot to credit some Unity documents!!!
+https://docs.unity3d.com/Manual/UnityAds.html
+https://unityads.unity3d.com/help/unity/integration-guide-unity
+https://developers.google.com/admob/android/test-ads
+https://developers.google.com/admob/unity/banner
+https://developers.google.com/admob/unity/start
+https://developers.google.com/admob/unity/test-ads
+https://support.google.com/admob/answer/6128543?hl=id
+https://developers.google.com/admob/android/quick-start
+(If some references weren't here, they are in each related script.)
+
+Source code:
+https://github.com/JOELwindows7/The_Game_Of_Ransax
+GNU GPL v3
+WARNING: use your own Advertisement ID!!!

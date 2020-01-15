@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="815.96092"
-     inkscape:cy="1047.4804"
+     inkscape:cx="1277.9763"
+     inkscape:cy="1212.2054"
      inkscape:document-units="px"
      inkscape:current-layer="g8463"
      showgrid="true"
@@ -109,11 +109,12 @@
       <path
          inkscape:connector-curvature="0"
          id="path8458"
-         d="m 64,907.13334 128,-512 320,128 -352,128 288,256 -256,-32 224,-192 z"
+         d="m 64,907.13334 128,-512 320,128 -352,128 288,256 L 315.06973,816.13315 192,875.13334 l 224,-192 -148.93027,84.99981 -96,-80 z"
          style="fill:#00ff00;fill-opacity:1;stroke:#f70000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:export-filename="C:\Users\ASUS\Documents\starring codes\Unity Projects\Parloring_and_Macetin_2in1_OhNo\Assets\Sprites\RansaxIcon.png"
          inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
+         inkscape:export-ydpi="96"
+         sodipodi:nodetypes="ccccccccccc" />
     </g>
   </g>
 </svg>

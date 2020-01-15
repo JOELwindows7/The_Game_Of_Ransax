@@ -16,12 +16,16 @@ public class ParlorGame : MonoBehaviour
     public int HPinit = 5;
     [SerializeField] int HPnumber = 5;
     [SerializeField] float HPfloat;
+    [SerializeField] int DiceRange = 100;
+    [SerializeField] int DiceSelect = 0;
+    [SerializeField] int DiceWishMeLuck = 77;
     public int HPnumber1 { get => HPnumber; /*set => HPnumber = value;*/ }
     
-    public int BulletInit = 10;
-    [SerializeField] int BulletAmmo = 10;
-    [SerializeField] float BulletFloat = 10f;
-    public int BulletAmmo1 { get => BulletAmmo; /*set => BulletAmmo = value;*/ }
+    public int SelectWepon = 0;
+    public int [] BulletInit = {10,10,5};
+    public int [] BulletAmmo = {10, 10, 5};
+    public float [] BulletFloat = {10f, 10f, 5f};
+    //public int BulletAmmo1 { get => BulletAmmo; /*set => BulletAmmo = value;*/ }
     
 
     [SerializeField] float ScoreYeah = 0f;
@@ -38,6 +42,8 @@ public class ParlorGame : MonoBehaviour
 
     [SerializeField] float HiScoreFirst = 0f;
     public float HiScoreFirst1 { get => HiScoreFirst; set => HiScoreFirst = value; }
+    
+
     public float InGameHiScore = 0f;
 
     void Awake(){
@@ -49,6 +55,7 @@ public class ParlorGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SelectWepon=0;
         if (!transform.parent)
         {
             HasGameStarted = true;
@@ -59,7 +66,10 @@ public class ParlorGame : MonoBehaviour
     void Update()
     {
         HPfloat = (float)HPnumber;
-        BulletFloat = (float)BulletAmmo;
+        //BulletFloat = (float)BulletAmmo1;
+        for(int i=0; i < BulletFloat.Length-1;i++){
+            BulletFloat[i]=(float)BulletAmmo[i];
+        }
         if(HasGameStarted){
             //bekgronding.xVelocity = .5f;
             bekgronding.SwitchOn();
@@ -77,8 +87,8 @@ public class ParlorGame : MonoBehaviour
                 }
             }
 
-            parlorSpecificUI.AmmoNumber = BulletAmmo;
-            parlorSpecificUI.AmmoMax = BulletInit;
+            parlorSpecificUI.AmmoNumber = BulletAmmo[SelectWepon];
+            parlorSpecificUI.AmmoMax = BulletInit[SelectWepon];
 
             parlorSpecificUI.ScoreNumber = ScoreYeah;
             parlorSpecificUI.HiScoredNumber = InGameHiScore;
@@ -107,10 +117,12 @@ public class ParlorGame : MonoBehaviour
     }
 
     public void BulletThrow(){
-        BulletAmmo--;
+        BulletAmmo[SelectWepon]--;
     }
     public void BulletReload(){
-        BulletAmmo = BulletInit;
+        if(SelectWepon == 0){
+            BulletAmmo[SelectWepon] = BulletInit[SelectWepon];
+        }
     }
 
     public void ResetScore(){
@@ -127,17 +139,34 @@ public class ParlorGame : MonoBehaviour
 
     //got a kiss
     public void TargetHit(){
-        //ScoreYeah+=100f;
-        AddScore(100f);
-        BulletThrow();
+        if(HasGameStarted){
+            //ScoreYeah+=100f;
+            if(HasGameStarted){ 
+                AddScore(100f);
+                BulletThrow();
+
+                WishMeLuck();
+            }
+        }
     }
     public void TargetMiss(){
-        if(!parlorSpecificUI.isGamePaused){
-            Ouch();
-            Debug.Log("MinusHP");
-        }
+        if(HasGameStarted){
+            if(SelectWepon == 0){
+                if(!parlorSpecificUI.isGamePaused){
+                    Ouch();
+                    Debug.Log("MinusHP");
+                }
+            }
 
-        BulletThrow();
+            BulletThrow();
+        }
+    }
+
+    public void WishMeLuck(){
+        DiceSelect = Random.Range(0,DiceRange);
+        if(DiceSelect == DiceWishMeLuck){
+            Heal();
+        }
     }
 
     public void StartTheGameNow()

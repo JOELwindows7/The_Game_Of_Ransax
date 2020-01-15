@@ -68,6 +68,7 @@ public class CoreCanvas : MonoBehaviour
     }
     public void InstructStartGame(int GameIndex)
     {
+        Advertiser.Instance.HideBanner();
         DvdSlotUI.ReceiveInstructionGameStart(GameIndex);
         DVDSlotGame.ReceiveInstructionGameStart(GameIndex);
     }
@@ -83,7 +84,18 @@ public class CoreCanvas : MonoBehaviour
     }
 
     public void OpenShopMenu(int GameIndex){
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.Bottom);
         DvdSlotUI.OpenShopMenu(GameIndex);
+    }
+
+    public void OpenCreditMenu(int GameIndex){
+        Advertiser.Instance.HideBanner();
+        DvdSlotUI.OpenCreditMenu(GameIndex);
+    }
+    public void OpenInstructionMenu(int GameIndex){
+        Advertiser.Instance.HideBanner();
+        DvdSlotUI.OpenInstructionMenu(GameIndex);
     }
 
     public void InvokeAreYouSureDialog()
@@ -104,11 +116,14 @@ public class CoreCanvas : MonoBehaviour
     public void ShutdownHexagonEngine()
     {
         Debug.Log("Shutdown Hexagon Engine initiated!");
+        Advertiser.Instance.ShowAd();
         Application.Quit();
         closeAreYouSureDialog();
     }
     public void GoBackToChangeDVD()
     {
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
         chooseDVDMenu.EjectDVDNumber();
         closeAreYouSureDialog();
         Advertiser.Instance.ShowAd();
@@ -119,9 +134,13 @@ public class CoreCanvas : MonoBehaviour
         InstructStopGame(DVD_ID);
         closeAreYouSureDialog();
         Advertiser.Instance.ShowAd();
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
     }
 
     public void JustBackToMainMenu(){
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
         DvdSlotUI.GoBackToMenu(DVD_ID);
     }
 }

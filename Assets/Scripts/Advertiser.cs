@@ -2,21 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Monetization;
+using GoogleMobileAds.Api;
+using System;
 //using UnityEngine.Advertisements;
 
 public class Advertiser : Singleton<Advertiser>
 {
+    /*
+    Unity Ads
+    */
     // https://www.youtube.com/watch?v=DWmD1RRORfc&t=290s
 
+    //[SerializeField] TextAsset adMobFile;
     [SerializeField] string GameId = "3425704";
+    [SerializeField] string GoogleAppID = "ca-app-pub-3940256099942544~3347511713"; //Use your own ID!!!
+    //admob.com
+    [SerializeField] string bannerAppID = "ca-app-pub-3940256099942544/6300978111"; //Use your own ID!!!
     [SerializeField] bool UseTheFieldGameID = false;
-    [SerializeField] bool TestMode = false;
+    [SerializeField] bool TestMode = true;
     //public string placementId = "rewardedVideo";
     public string placementId_No = "video";
     public string placementId_Rewarded = "rewardedVideo";
     // Start is called before the first frame update
     void Start()
     {
+        if(Application.platform == RuntimePlatform.Android){
+            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : "censored";
+        } else if(Application.platform == RuntimePlatform.IPhonePlayer){
+            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : "todo";
+        } else {
+            GoogleAppID = "";
+        }
         if(UseTheFieldGameID){
         } else {
             switch(Application.platform){
@@ -36,6 +52,10 @@ public class Advertiser : Singleton<Advertiser>
 
         //Advertisement.Initialize(GameId,TestMode);
         Monetization.Initialize(GameId,TestMode);
+        MobileAds.Initialize(GoogleAppID);
+
+        //Request Google Ad banner now!
+        RequestBanner(AdPosition.BottomLeft); 
     }
 
     // Update is called once per frame
@@ -76,17 +96,107 @@ public class Advertiser : Singleton<Advertiser>
     }
 
     void AdFinished (ShowResult result) {
-        Debug.Log("Ad Rewarding");
+        Debug.Log("Ad Rewarding is " + result);
+        AndroidToast.ShowToast("Ad Rewarding is " + result);
         if (result == ShowResult.Finished) {
             // Reward the player
             Kixlonzing.Instance.AddKixlonz(25);
+            //AndroidToast.ShowToast("Ad Finished Rewarded");
         }
     }
     void AdFinished_No (ShowResult result) {
-        Debug.Log("Ad Finish");
+        Debug.Log("Ad Finish is " + result);
+        AndroidToast.ShowToast("Ad Finish is " + result);
         if (result == ShowResult.Finished) {
             // Reward the player
             Kixlonzing.Instance.AddKixlonz(20);
+            //AndroidToast.ShowToast("Ad Finished Regular");
+        }
+    }
+
+    /*Google Ads
+    Ads of Google
+    Admob
+    https://developers.google.com/admob/unity/banner
+    https://developers.google.com/admob/unity/start
+    https://developers.google.com/admob/unity/test-ads
+    */
+
+    private BannerView bannerView;
+    [SerializeField] AdPosition adPosition = AdPosition.BottomLeft;
+
+    public void RequestBanner(){
+        //bannerAppID is ad unit ID
+        if(Application.platform == RuntimePlatform.Android){
+            bannerAppID = TestMode? "ca-app-pub-3940256099942544/6300978111" : "censored";
+        } else if(Application.platform == RuntimePlatform.IPhonePlayer){
+            bannerAppID= TestMode? "ca-app-pub-3940256099942544/2934735716": "todo";
+        } else {
+            bannerAppID = "unexpected_platform";
+        }
+        //adPosition = AdPosition.BottomLeft;
+        bannerView = new BannerView(bannerAppID, AdSize.Banner, adPosition);
+
+        // Called when an ad request has successfully loaded.
+        this.bannerView.OnAdLoaded += this.HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        this.bannerView.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        this.bannerView.OnAdOpening += this.HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        this.bannerView.OnAdClosed += this.HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        this.bannerView.OnAdLeavingApplication += this.HandleOnAdLeavingApplication;
+
+        AdRequest request = new AdRequest.Builder().Build();
+
+        bannerView.LoadAd(request);
+    }
+
+    public void RequestBanner(AdPosition position){
+        adPosition = position;
+        RequestBanner();
+    }
+
+     public void HandleOnAdLoaded(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLoaded event received");
+        if(TestMode) AndroidToast.ShowToast("HandleAdLoaded event received");
+        Kixlonzing.Instance.AddKixlonz(5);
+    }
+
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
+                            + args.Message);
+        //ToastMessager.Instance.showToastOnUiThread("HandleFailedToReceiveAd event received with message: " + args.Message);
+        AndroidToast.ShowToast("HandleFailedToReceiveAd event received with message: " + args.Message);
+    }
+
+    public void HandleOnAdOpened(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdOpened event received");
+        Kixlonzing.Instance.AddKixlonz(10);
+    }
+
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdClosed event received");
+        if(TestMode) AndroidToast.ShowToast("HandleAdClosed event received");
+        Kixlonzing.Instance.AddKixlonz(10);
+    }
+
+    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLeavingApplication event received");
+        if(TestMode) AndroidToast.ShowToast("HandleAdLeavingApplication event received");
+        Kixlonzing.Instance.AddKixlonz(20);
+    }
+
+    public void HideBanner(){
+        if(bannerView != null){
+            //bannerView.Hide();
+            bannerView.Destroy();
         }
     }
 }

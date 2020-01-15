@@ -97,7 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7eec1e4057a1a42af812cbde59b800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundFile: {fileID: 8300000, guid: 3b8bbc7e28a3be3438a2961fcd1a834c, type: 3}
+  soundFile: {fileID: 8300000, guid: 37e96fdf09162ad479f56334db4ad4d9, type: 3}
+  MultiSoundFilesAtOnce: []
+  MultiSoundFilesRandomly: []
+  VolumeOut: 0.5
+  PlaySoundFile: 1
+  PlayMultiAtOnce: 0
+  PlayMultiRandomly: 0
   ParticleExplode: {fileID: 3474926330458242290, guid: 2b3a31b55631452498124fd0dbe638e9,
     type: 3}
   MoveLeftSpeed: 3

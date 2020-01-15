@@ -73,6 +73,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 434581f13f906484da14e8cb664fe12f,
         type: 3}
+    - target: {fileID: 2256061989581747336, guid: 80702d5d9d1fb864caeb6ff442c3c15e,
+        type: 3}
+      propertyPath: ParticleExplode
+      value: 
+      objectReference: {fileID: 3474926330458242290, guid: 2b3a31b55631452498124fd0dbe638e9,
+        type: 3}
     - target: {fileID: 2256061989581747343, guid: 80702d5d9d1fb864caeb6ff442c3c15e,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size

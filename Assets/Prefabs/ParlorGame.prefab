@@ -801,9 +801,13 @@ MonoBehaviour:
   HPinit: 5
   HPnumber: 5
   HPfloat: 0
-  BulletInit: 10
-  BulletAmmo: 10
-  BulletFloat: 10
+  SelectWepon: 0
+  BulletInit: 0a0000000a00000005000000
+  BulletAmmo: 0a0000000a00000005000000
+  BulletFloat:
+  - 10
+  - 10
+  - 5
   ScoreYeah: 0
   HiScoreFirst: 0
   InGameHiScore: 0

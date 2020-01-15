@@ -24,6 +24,17 @@ public class BuiltInMenu : MonoBehaviour
         //ChooseDvdMenu.EjectDVDNumber();
         coreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.ChangeDVD);
     }
+
+    public void PressInstructionButtion(int GameIndex){
+        coreCanvas.OpenInstructionMenu(GameIndex);
+        gameObject.SetActive(false);
+    }
+
+    public void PressCreditButton(int GameIndex){
+        coreCanvas.OpenCreditMenu(GameIndex);
+        gameObject.SetActive(false);
+    }
+
     private void Awake()
     {
         //foreach(GameObject MenuMembers in transform.ch)

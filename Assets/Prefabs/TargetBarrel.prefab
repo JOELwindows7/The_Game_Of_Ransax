@@ -75,6 +75,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
         type: 3}
+      propertyPath: MultiSoundFilesRandomly.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
       propertyPath: MoveLeftSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -84,6 +89,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3611234567200303016, guid: 43a7ecff3b1b029489238e36c02c7b63,
         type: 3}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: soundFile
+      value: 
+      objectReference: {fileID: 8300000, guid: c468324050056b3419d188e6bbb8e661, type: 3}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: VolumeOut
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: MultiSoundFilesRandomly.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 17205be7b87e3d14ca4fde6676a4e63c, type: 3}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: MultiSoundFilesRandomly.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c468324050056b3419d188e6bbb8e661, type: 3}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: PlayMultiRandomly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672636109048011722, guid: 2b5b831ab6e303947a8109726dc142fc,
+        type: 3}
+      propertyPath: PlaySoundFile
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7672636109048011725, guid: 2b5b831ab6e303947a8109726dc142fc,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.size

@@ -13,6 +13,8 @@ public class Kixlonzing : Singleton<Kixlonzing>
     public void AddKixlonz(int amount){
         KixlonzAmount += amount;
         PlayerPrefs.SetInt("KixlonzAmount", KixlonzAmount);
+        //ToastMessager.Instance.showToastOnUiThread("You got KXZ " + amount + " !!!\n Now you have KXZ " +KixlonzAmount + " . Yeah!");
+        AndroidToast.ShowToast("You got KXZ " + amount + " !!!\n Now you have KXZ " +KixlonzAmount + " . Yeah!");
         PlayerPrefs.Save();
     }
 
