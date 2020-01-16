@@ -23,6 +23,7 @@ https://www.youtube.com/watch?v=epRPKFsOPck bekgron scrollin
 https://www.youtube.com/watch?v=DWmD1RRORfc&t=290s
 https://docs.unity3d.com/ Oh no! I forgot to credit some Unity documents!!!
 https://docs.unity3d.com/Manual/UnityAds.html
+https://docs.unity3d.com/Manual/StreamingAssets.html
 https://unityads.unity3d.com/help/unity/integration-guide-unity
 https://developers.google.com/admob/android/test-ads
 https://developers.google.com/admob/unity/banner
@@ -30,6 +31,10 @@ https://developers.google.com/admob/unity/start
 https://developers.google.com/admob/unity/test-ads
 https://support.google.com/admob/answer/6128543?hl=id
 https://developers.google.com/admob/android/quick-start
+https://forum.unity.com/threads/open-external-files.25561/
+https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
+https://en.wikipedia.org/wiki/Unity_(game_engine)
+
 (If some references weren't here, they are in each related script.)
 
 Source code:

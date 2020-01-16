@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Monetization;
 using GoogleMobileAds.Api;
 using System;
+using System.IO;
 //using UnityEngine.Advertisements;
 
 public class Advertiser : Singleton<Advertiser>
@@ -15,21 +16,38 @@ public class Advertiser : Singleton<Advertiser>
 
     //[SerializeField] TextAsset adMobFile;
     [SerializeField] string GameId = "3425704";
+    [SerializeField] string AdMobFilePath = Application.streamingAssetsPath + "AdMob/adMob_id.adMob";
+    //https://docs.unity3d.com/Manual/StreamingAssets.html
     [SerializeField] string GoogleAppID = "ca-app-pub-3940256099942544~3347511713"; //Use your own ID!!!
     //admob.com
     [SerializeField] string bannerAppID = "ca-app-pub-3940256099942544/6300978111"; //Use your own ID!!!
+    [SerializeField] string InterstitialID = "";
+    [SerializeField] string RewardeningID = "";
     [SerializeField] bool UseTheFieldGameID = false;
     [SerializeField] bool TestMode = true;
     //public string placementId = "rewardedVideo";
     public string placementId_No = "video";
     public string placementId_Rewarded = "rewardedVideo";
     // Start is called before the first frame update
+    
+    [SerializeField] string DissectGoogleAppID;
+    [SerializeField] string DissectbannerUnitID;
+    void DissectAdMobIDs(){
+        //https://support.unity3d.com/hc/en-us/articles/115000341143-How-do-I-read-and-write-data-from-a-text-file-
+        StreamReader reader = new StreamReader(AdMobFilePath);
+        string [] Reading = reader.ReadToEnd().Split('#'); //https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
+        DissectGoogleAppID = Reading[0];
+        DissectbannerUnitID = Reading[1];
+
+        reader.Close();
+    }
     void Start()
     {
+        DissectAdMobIDs();
         if(Application.platform == RuntimePlatform.Android){
-            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : "censored";
+            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : DissectGoogleAppID;
         } else if(Application.platform == RuntimePlatform.IPhonePlayer){
-            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : "todo";
+            GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : DissectGoogleAppID;
         } else {
             GoogleAppID = "";
         }
@@ -128,9 +146,9 @@ public class Advertiser : Singleton<Advertiser>
     public void RequestBanner(){
         //bannerAppID is ad unit ID
         if(Application.platform == RuntimePlatform.Android){
-            bannerAppID = TestMode? "ca-app-pub-3940256099942544/6300978111" : "censored";
+            bannerAppID = TestMode? "ca-app-pub-3940256099942544/6300978111" : DissectbannerUnitID;
         } else if(Application.platform == RuntimePlatform.IPhonePlayer){
-            bannerAppID= TestMode? "ca-app-pub-3940256099942544/2934735716": "todo";
+            bannerAppID= TestMode? "ca-app-pub-3940256099942544/2934735716": DissectbannerUnitID;
         } else {
             bannerAppID = "unexpected_platform";
         }
