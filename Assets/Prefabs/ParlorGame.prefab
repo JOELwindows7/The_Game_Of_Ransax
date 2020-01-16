@@ -46,7 +46,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 2256061989581747339, guid: 80702d5d9d1fb864caeb6ff442c3c15e, type: 3}
   - {fileID: 60708990668837021, guid: ffa8652e1f7cfb149825a88f44dbb234, type: 3}
-  SpawnEverySecond: 9
+  SpawnEverySecond: 5
   SpawnAgainTimer: 5
   minRandom: 1
   maxRandom: 10
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabToList:
   - {fileID: 7672636109048011721, guid: 2b5b831ab6e303947a8109726dc142fc, type: 3}
-  SpawnEverySecond: 6
+  SpawnEverySecond: 5
   SpawnAgainTimer: 5
   minRandom: 1
   maxRandom: 10
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabToList:
   - {fileID: 2242925994586429800, guid: 72940ff5216392343af702ee6d4c9f6c, type: 3}
-  SpawnEverySecond: 7
+  SpawnEverySecond: 5
   SpawnAgainTimer: 5
   minRandom: 1
   maxRandom: 10
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabToList:
   - {fileID: 2242925994586429800, guid: 72940ff5216392343af702ee6d4c9f6c, type: 3}
-  SpawnEverySecond: 9
+  SpawnEverySecond: 5
   SpawnAgainTimer: 5
   minRandom: 1
   maxRandom: 10
@@ -388,7 +388,7 @@ MonoBehaviour:
   soundFile: {fileID: 0}
   materialingBekgron: {fileID: 0}
   offseting: {x: 0, y: 0}
-  xVelocity: 1
+  xVelocity: 0
   yVelocity: 0
   ScrollSpeed: 0.5
 --- !u!50 &5195902975232881194
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86db5682db350ec48afdbd228ea18c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parlorGame: {fileID: 4578386932300914558}
+  parlorGame: {fileID: 0}
 --- !u!114 &4578386932300914558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +801,11 @@ MonoBehaviour:
   HPinit: 5
   HPnumber: 5
   HPfloat: 0
+  PunishFellOffScreen: 0
+  MaxFellOffScreen: 10
+  DiceRange: 100
+  DiceSelect: 0
+  DiceWishMeLuck: 77
   SelectWepon: 0
   BulletInit: 0a0000000a00000005000000
   BulletAmmo: 0a0000000a00000005000000
@@ -811,8 +816,7 @@ MonoBehaviour:
   ScoreYeah: 0
   HiScoreFirst: 0
   InGameHiScore: 0
-  spawnerings:
-  - {fileID: 4578386932108867991}
+  spawnerings: []
 --- !u!1 &4927383653128634343
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabToList:
   - {fileID: 2242925994586429800, guid: 72940ff5216392343af702ee6d4c9f6c, type: 3}
-  SpawnEverySecond: 8
+  SpawnEverySecond: 5
   SpawnAgainTimer: 5
   minRandom: 1
   maxRandom: 10

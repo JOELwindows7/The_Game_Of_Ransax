@@ -27,6 +27,10 @@ public class DVDSlotUI : MonoBehaviour
         UISets[GameIndex].OpenInstructionMenu();
     }
 
+    public void OpenSettingMenu(int GameIndex){
+        UISets[GameIndex].OpenSettingMenu();
+    }
+
     public void GoBackToMenu(int GameIndex){
         UISets[GameIndex].BackToMenu();
     }

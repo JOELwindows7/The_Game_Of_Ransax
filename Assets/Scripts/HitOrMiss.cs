@@ -31,4 +31,10 @@ public class HitOrMiss : Singleton<HitOrMiss>
             targetParlor.TargetMiss();
         }
     }
+
+    public void FellOffScreen(){
+        if(targetParlor){
+            targetParlor.TargetFellOffScreen();
+        }
+    }
 }

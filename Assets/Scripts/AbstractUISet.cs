@@ -8,6 +8,7 @@ public class AbstractUISet : MonoBehaviour
     public AbstractGameplayUI AbstractGameplayUI;
     public AbstractCreditUI AbstractCreditUI;
     public AbstractInstructionUI AbstractInstructionUI;
+    public AbstractSettingUI AbstractSettingUI;
     public AbstractShopUI AbstractShopUI;
     public PreemptedDialog PreemptedDialog;
     // Start is called before the first frame update
@@ -24,6 +25,9 @@ public class AbstractUISet : MonoBehaviour
         }
         if(AbstractInstructionUI){
             AbstractInstructionUI.gameObject.SetActive(false);
+        }
+        if(AbstractSettingUI){
+            AbstractSettingUI.gameObject.SetActive(false);
         }
     }
 
@@ -46,6 +50,12 @@ public class AbstractUISet : MonoBehaviour
     public void OpenInstructionMenu(){
         if(AbstractInstructionUI){
             AbstractInstructionUI.gameObject.SetActive(true);
+        }
+    }
+
+    public void OpenSettingMenu(){
+        if(AbstractSettingUI){
+            AbstractSettingUI.gameObject.SetActive(true);
         }
     }
 

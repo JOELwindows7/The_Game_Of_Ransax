@@ -97,6 +97,10 @@ public class CoreCanvas : MonoBehaviour
         Advertiser.Instance.HideBanner();
         DvdSlotUI.OpenInstructionMenu(GameIndex);
     }
+    public void OpenSettingMenu(int GameIndex){
+        Advertiser.Instance.HideBanner();
+        DvdSlotUI.OpenSettingMenu(GameIndex);
+    }
 
     public void InvokeAreYouSureDialog()
     {

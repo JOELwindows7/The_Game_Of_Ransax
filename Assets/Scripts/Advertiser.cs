@@ -16,13 +16,13 @@ public class Advertiser : Singleton<Advertiser>
 
     //[SerializeField] TextAsset adMobFile;
     [SerializeField] string GameId = "3425704";
-    [SerializeField] string AdMobFilePath = Application.streamingAssetsPath + "AdMob/adMob_id.adMob";
+    [SerializeField] string AdMobFilePath = Application.streamingAssetsPath + "/AdMob/adMob_id.adMob";
     //https://docs.unity3d.com/Manual/StreamingAssets.html
     [SerializeField] string GoogleAppID = "ca-app-pub-3940256099942544~3347511713"; //Use your own ID!!!
     //admob.com
     [SerializeField] string bannerAppID = "ca-app-pub-3940256099942544/6300978111"; //Use your own ID!!!
-    [SerializeField] string InterstitialID = "";
-    [SerializeField] string RewardeningID = "";
+    [SerializeField] string InterstitialID = "ca-app-pub-3940256099942544/8691691433";
+    [SerializeField] string RewardeningID = "ca-app-pub-3940256099942544/5224354917";
     [SerializeField] bool UseTheFieldGameID = false;
     [SerializeField] bool TestMode = true;
     //public string placementId = "rewardedVideo";

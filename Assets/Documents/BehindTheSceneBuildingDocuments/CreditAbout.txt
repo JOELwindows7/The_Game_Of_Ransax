@@ -9,6 +9,9 @@ Yudhistira Rizqi Hersanda (2101653324) = Audio
 
 Using assets:
 Vincent Thamrin original drawn wepons
+Septesen running objects images of Balon, Tong Barrel, Menu themes and box
+Billy Husada UI design out of Wireframe concept
+Joel Robert Justiawan previous semester background of StarLight, from 2D Animation subject, Qmoveph. HUFF!!! so hard to find great seamless graphic!
 https://freesound.org/people/qubodup/sounds/222373/
 https://freesound.org/people/Gniffelbaf/sounds/82109/
 https://freesound.org/people/kevinkace/sounds/66770/
@@ -16,6 +19,7 @@ https://freesound.org/people/kyles/sounds/452596/
 https://www.freepik.com/free-vector/seamless-background-with-flowers-garden_1250798.htm
 https://www.freepik.com/free-vector/isolated-nature-decor_3875002.htm#page=1&query=garden%20pattern
 https://www.freepik.com/free-vector/seamless-scene-with-trees-park_4866970.htm#page=1&query=garden%20seamless
+(Assets that lose credit may be removed even to the source code. If you finally found credit, please immediately send to @JOELwindows7 , to prevent them from being thrown away)
 
 Reference:
 https://support.unity3d.com/hc/en-us/articles/115000341143-How-do-I-read-and-write-data-from-a-text-file-
@@ -24,6 +28,7 @@ https://www.youtube.com/watch?v=DWmD1RRORfc&t=290s
 https://docs.unity3d.com/ Oh no! I forgot to credit some Unity documents!!!
 https://docs.unity3d.com/Manual/UnityAds.html
 https://docs.unity3d.com/Manual/StreamingAssets.html
+https://docs.unity3d.com/ScriptReference/EditorWindow.html
 https://unityads.unity3d.com/help/unity/integration-guide-unity
 https://developers.google.com/admob/android/test-ads
 https://developers.google.com/admob/unity/banner
@@ -34,6 +39,7 @@ https://developers.google.com/admob/android/quick-start
 https://forum.unity.com/threads/open-external-files.25561/
 https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
 https://en.wikipedia.org/wiki/Unity_(game_engine)
+https://www.youtube.com/watch?v=YOaYQrN1oYQ
 
 (If some references weren't here, they are in each related script.)
 

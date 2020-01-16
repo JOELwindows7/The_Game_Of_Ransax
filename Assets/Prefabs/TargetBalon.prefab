@@ -100,7 +100,7 @@ MonoBehaviour:
   soundFile: {fileID: 8300000, guid: 37e96fdf09162ad479f56334db4ad4d9, type: 3}
   MultiSoundFilesAtOnce: []
   MultiSoundFilesRandomly: []
-  VolumeOut: 0.5
+  VolumeOut: 1
   PlaySoundFile: 1
   PlayMultiAtOnce: 0
   PlayMultiRandomly: 0

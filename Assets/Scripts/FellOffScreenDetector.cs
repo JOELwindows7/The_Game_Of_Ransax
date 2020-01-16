@@ -28,6 +28,7 @@ public class FellOffScreenDetector : MonoBehaviour
         if(MakeSureCompare.gameObject == TouchTarget.gameObject)
         {
             Destroy(TouchTarget.gameObject);
+            HitOrMiss.Instance.FellOffScreen();
         }
     }
 

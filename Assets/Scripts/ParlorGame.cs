@@ -16,6 +16,8 @@ public class ParlorGame : MonoBehaviour
     public int HPinit = 5;
     [SerializeField] int HPnumber = 5;
     [SerializeField] float HPfloat;
+    [SerializeField] int PunishFellOffScreen = 0;
+    public int MaxFellOffScreen = 10;
     [SerializeField] int DiceRange = 100;
     [SerializeField] int DiceSelect = 0;
     [SerializeField] int DiceWishMeLuck = 77;
@@ -159,6 +161,17 @@ public class ParlorGame : MonoBehaviour
             }
 
             BulletThrow();
+        }
+    }
+
+    public void TargetFellOffScreen(){
+        if(HasGameStarted){
+            if(PunishFellOffScreen < MaxFellOffScreen){
+                PunishFellOffScreen++;
+            } else if(PunishFellOffScreen >= MaxFellOffScreen){
+                PunishFellOffScreen = 0;
+                Ouch();
+            }
         }
     }
 

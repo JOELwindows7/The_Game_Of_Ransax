@@ -35,6 +35,11 @@ public class BuiltInMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void PressSettingButton(int GameIndex){
+        coreCanvas.OpenSettingMenu(GameIndex);
+        gameObject.SetActive(false);
+    }
+
     private void Awake()
     {
         //foreach(GameObject MenuMembers in transform.ch)
