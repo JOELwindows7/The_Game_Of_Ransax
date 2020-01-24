@@ -7,6 +7,13 @@ public class HitOrMiss : Singleton<HitOrMiss>
     public ParlorGame targetParlor;
     public float BulletAmmoNumber;
     public int SelectedWeapon;
+
+    public AudioClip weponEmpty;
+    public AudioClip weponPistolShot;
+    public AudioClip weponReload;
+    public AudioClip weponLastShotFired;
+
+    public AudioClip EikSerkatDedd;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +43,26 @@ public class HitOrMiss : Singleton<HitOrMiss>
         if(targetParlor){
             targetParlor.TargetFellOffScreen();
         }
+    }
+
+    public void WeponShotSound(){
+        if(targetParlor.HasGameStarted) {
+            ExternalSpeaker.Instance.FlashSoundEffect(weponPistolShot);
+            if(BulletAmmoNumber == 1){
+                WeponShotLast();
+            }
+        }
+    }
+    public void WeponShotEmpty(){
+        if(targetParlor.HasGameStarted) ExternalSpeaker.Instance.FlashSoundEffect(weponEmpty);
+    }
+    public void WeponShotReload(){
+        if(targetParlor.HasGameStarted) ExternalSpeaker.Instance.FlashSoundEffect(weponReload);
+    }
+    public void WeponShotLast(){
+        if(targetParlor.HasGameStarted) ExternalSpeaker.Instance.FlashSoundEffect(weponLastShotFired);
+    }
+    public void EikSerkatImDedd(){
+        ExternalSpeaker.Instance.FlashSoundEffect(EikSerkatDedd);
     }
 }

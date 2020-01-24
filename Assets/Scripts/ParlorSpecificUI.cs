@@ -96,7 +96,8 @@ public class ParlorSpecificUI : MonoBehaviour
             //preemptedDialog.IsGamePaused = true;
         }
         if(PauseText){
-            PauseText.text = "RESURRECT\n(WATCH AD)";
+            //PauseText.text = "RESURRECT\n(WATCH AD)";
+            PauseText.text = "OH\nNO";
         }
         SpawnPreemptedDialogAs(PreemptedDialog.WhichMode.Game_Over);
     }

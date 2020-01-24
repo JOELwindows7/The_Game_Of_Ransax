@@ -47,7 +47,7 @@ MonoBehaviour:
   - {fileID: 2256061989581747339, guid: 80702d5d9d1fb864caeb6ff442c3c15e, type: 3}
   - {fileID: 60708990668837021, guid: ffa8652e1f7cfb149825a88f44dbb234, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 7
   minRandom: 1
   maxRandom: 10
   useRandom: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 7672636109048011721, guid: 2b5b831ab6e303947a8109726dc142fc, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 3
   minRandom: 1
   maxRandom: 10
   useRandom: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 2242925994586429800, guid: 72940ff5216392343af702ee6d4c9f6c, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 4
   minRandom: 1
   maxRandom: 10
   useRandom: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 2242925994586429800, guid: 72940ff5216392343af702ee6d4c9f6c, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 6
   minRandom: 1
   maxRandom: 10
   useRandom: 1
@@ -385,8 +385,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engineSelf: {fileID: 0}
-  soundFile: {fileID: 0}
-  materialingBekgron: {fileID: 0}
+  soundFile: {fileID: 8300000, guid: 9101723131fa9034f8ebf8145e7b8d20, type: 3}
+  materialSelectList:
+  - {fileID: 2100000, guid: f0a918d8fc838ea43ac74c052d6af40b, type: 2}
+  - {fileID: 2100000, guid: 3813d901020b3d94198f0a733eb3f7b7, type: 2}
+  - {fileID: 2100000, guid: d73821420e6bc744095e0186e557152d, type: 2}
+  - {fileID: 2100000, guid: 1b9523fb9c46279479a45381529150c3, type: 2}
+  - {fileID: 2100000, guid: c8713e091e40aac4f8fd87fa1c77a101, type: 2}
+  materialIndex: 0
+  materialingBekgron: {fileID: 2100000, guid: f0a918d8fc838ea43ac74c052d6af40b, type: 2}
   offseting: {x: 0, y: 0}
   xVelocity: 0
   yVelocity: 0
@@ -727,7 +734,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 7672636109048011721, guid: 2b5b831ab6e303947a8109726dc142fc, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 2
   minRandom: 1
   maxRandom: 10
   useRandom: 1
@@ -1009,7 +1016,7 @@ MonoBehaviour:
   PrefabToList:
   - {fileID: 7672636109048011721, guid: 2b5b831ab6e303947a8109726dc142fc, type: 3}
   SpawnEverySecond: 5
-  SpawnAgainTimer: 5
+  SpawnAgainTimer: 3
   minRandom: 1
   maxRandom: 10
   useRandom: 1

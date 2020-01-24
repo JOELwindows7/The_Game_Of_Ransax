@@ -15,7 +15,7 @@ public class Advertiser : Singleton<Advertiser>
     // https://www.youtube.com/watch?v=DWmD1RRORfc&t=290s
 
     //[SerializeField] TextAsset adMobFile;
-    [SerializeField] string GameId = "3425704";
+    public string GameId = "3425704";
     [SerializeField] string AdMobFilePath = Application.streamingAssetsPath + "/AdMob/adMob_id.adMob";
     //https://docs.unity3d.com/Manual/StreamingAssets.html
     [SerializeField] string GoogleAppID = "ca-app-pub-3940256099942544~3347511713"; //Use your own ID!!!
@@ -23,26 +23,38 @@ public class Advertiser : Singleton<Advertiser>
     [SerializeField] string bannerAppID = "ca-app-pub-3940256099942544/6300978111"; //Use your own ID!!!
     [SerializeField] string InterstitialID = "ca-app-pub-3940256099942544/8691691433";
     [SerializeField] string RewardeningID = "ca-app-pub-3940256099942544/5224354917";
-    [SerializeField] bool UseTheFieldGameID = false;
-    [SerializeField] bool TestMode = true;
+    public bool UseTheFieldGameID = false;
+    public bool TestMode = true;
     //public string placementId = "rewardedVideo";
     public string placementId_No = "video";
     public string placementId_Rewarded = "rewardedVideo";
     // Start is called before the first frame update
+
+    public InterstitialAd interstitial;
+    // https://www.youtube.com/watch?v=Nz5qD1EowL4
     
     [SerializeField] string DissectGoogleAppID;
     [SerializeField] string DissectbannerUnitID;
+    [SerializeField] string DissectInterstitialUnitID;
     void DissectAdMobIDs(){
         //https://support.unity3d.com/hc/en-us/articles/115000341143-How-do-I-read-and-write-data-from-a-text-file-
         StreamReader reader = new StreamReader(AdMobFilePath);
-        string [] Reading = reader.ReadToEnd().Split('#'); //https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
-        DissectGoogleAppID = Reading[0];
-        DissectbannerUnitID = Reading[1];
+        if(reader != null){
+            string [] Linep = reader.ReadToEnd().Split('\n');
+            string [] Reading = Linep[0].Split('#'); //https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
+            DissectGoogleAppID = Reading[0];
+            DissectbannerUnitID = Reading[1];
+            DissectInterstitialUnitID = Reading[2];
 
-        reader.Close();
+            reader.Close();
+        } else {
+            Debug.LogError("Admob ID not found");
+        }
+        
     }
     void Start()
     {
+        AdMobFilePath = Application.streamingAssetsPath + "/AdMob/adMob_id.adMob";
         DissectAdMobIDs();
         if(Application.platform == RuntimePlatform.Android){
             GoogleAppID = TestMode? "ca-app-pub-3940256099942544~3347511713" : DissectGoogleAppID;
@@ -73,7 +85,8 @@ public class Advertiser : Singleton<Advertiser>
         MobileAds.Initialize(GoogleAppID);
 
         //Request Google Ad banner now!
-        RequestBanner(AdPosition.BottomLeft); 
+        RequestBanner(AdPosition.BottomLeft);
+        RequestInterstitial(); 
     }
 
     // Update is called once per frame
@@ -81,18 +94,47 @@ public class Advertiser : Singleton<Advertiser>
     {
         
     }
-
     
+    [Range(0f,10f)][SerializeField] float ChanceAd = 0f;
+    public bool NoRelyUnityAds = false;
+    public bool UseTheNewUnityAds = true;
 
     public void ShowAd () {
         Debug.Log("Ad Attempted");
-        StartCoroutine (WaitForAd (false));
+
+        ChanceAd = UnityEngine.Random.Range(0f,10f);
+
+        if(ChanceAd > 5f && !NoRelyUnityAds){
+            if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (false));
+            else ExperimentAdvertiser.Instance.ShowAd();
+        } else {
+            ShowAd_Interstitial();
+        }
     }
 
     public void ShowAd_Rewarded () {
         Debug.Log("Ad Reward Attempted");
-        StartCoroutine (WaitForAd (true));
+
+        ChanceAd = UnityEngine.Random.Range(0f,10f);
+
+        if(ChanceAd > 5f && !NoRelyUnityAds){
+            if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (true));
+            else ExperimentAdvertiser.Instance.ShowAd(true);
+        } else {
+            ShowAd_InterstitialRewarded();
+        }
     }
+
+    public void ShowAd_Interstitial(){
+        //RequestInterstitial();
+        TriggerInterstitial();
+    }
+
+    public void ShowAd_InterstitialRewarded(){
+        //Temporary
+        ShowAd_Interstitial();
+    }
+    
 
     IEnumerator WaitForAd (bool rewarded = false) {
         string selectPlacementID = rewarded? placementId_Rewarded: placementId_No;
@@ -140,6 +182,56 @@ public class Advertiser : Singleton<Advertiser>
     https://developers.google.com/admob/unity/test-ads
     */
 
+    public void RequestInterstitial(){
+        if(Application.platform == RuntimePlatform.Android){
+            InterstitialID = TestMode? "ca-app-pub-3940256099942544/1033173712" : DissectInterstitialUnitID;
+        } else if(Application.platform == RuntimePlatform.IPhonePlayer){
+            InterstitialID= TestMode? "ca-app-pub-3940256099942544/1033173712": DissectInterstitialUnitID;
+        } else {
+            InterstitialID = "unexpected_platform";
+        }
+
+        if(interstitial != null){
+            interstitial.Destroy();
+        }
+
+        interstitial = new InterstitialAd(InterstitialID);
+        AdRequest requestInters = new AdRequest.Builder().Build();
+
+        interstitial.OnAdLoaded += HandleOnInterstitialLoaded;
+        interstitial.OnAdOpening += HandleOnInterstitialOpened;
+        interstitial.OnAdFailedToLoad += HandleOnInterstitialFailedToLoad;
+        interstitial.OnAdClosed += HandleOnInterstitialClosed;
+        interstitial.OnAdLeavingApplication += HandleOnInterstitialLeavingApplication;
+
+        
+        //https://developers.google.com/admob/unity/interstitial
+        
+
+        interstitial.LoadAd(requestInters);
+        // if(interstitial.IsLoaded()){
+        //     Kixlonzing.Instance.AddKixlonz(10);
+        //     interstitial.Show();
+        // }
+    }
+
+    private AdRequest CreateNewAdRequest(){
+        return new AdRequest.Builder().Build();
+    }
+
+    public void TriggerInterstitial(){
+        //Kixlonzing.Instance.AddKixlonz(10);
+        if(interstitial != null){
+            if(interstitial.IsLoaded()){
+                interstitial.Show();
+            } else {
+               RequestInterstitial();
+            }
+        } else {
+            RequestInterstitial();
+        }
+    }
+
     private BannerView bannerView;
     [SerializeField] AdPosition adPosition = AdPosition.BottomLeft;
 
@@ -182,6 +274,16 @@ public class Advertiser : Singleton<Advertiser>
         if(TestMode) AndroidToast.ShowToast("HandleAdLoaded event received");
         Kixlonzing.Instance.AddKixlonz(5);
     }
+     public void HandleOnInterstitialLoaded(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleInterstitialLoaded event received");
+        if(TestMode) AndroidToast.ShowToast("HandleInterstitialLoaded event received");
+        // if(interstitial.IsLoaded()){
+        //     Kixlonzing.Instance.AddKixlonz(10);
+        //     interstitial.Show();
+        // }
+        Kixlonzing.Instance.AddKixlonz(10);
+    }
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
@@ -191,11 +293,25 @@ public class Advertiser : Singleton<Advertiser>
         AndroidToast.ShowToast("HandleFailedToReceiveAd event received with message: " + args.Message);
     }
 
+    public void HandleOnInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        MonoBehaviour.print("HandleFailedToReceiveInterstitial event received with message: "
+                            + args.Message);
+        //ToastMessager.Instance.showToastOnUiThread("HandleFailedToReceiveAd event received with message: " + args.Message);
+        AndroidToast.ShowToast("HandleFailedToReceiveInterstitial event received with message: " + args.Message);
+    }
+
     public void HandleOnAdOpened(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdOpened event received");
         Kixlonzing.Instance.AddKixlonz(10);
     }
+    public void HandleOnInterstitialOpened(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleInterstitialOpened event received");
+        Kixlonzing.Instance.AddKixlonz(20);
+    }
+
 
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
@@ -203,12 +319,24 @@ public class Advertiser : Singleton<Advertiser>
         if(TestMode) AndroidToast.ShowToast("HandleAdClosed event received");
         Kixlonzing.Instance.AddKixlonz(10);
     }
+    public void HandleOnInterstitialClosed(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleInterstitialClosed event received");
+        if(TestMode) AndroidToast.ShowToast("HandleInterstitialClosed event received");
+        Kixlonzing.Instance.AddKixlonz(20);
+    }
 
     public void HandleOnAdLeavingApplication(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdLeavingApplication event received");
         if(TestMode) AndroidToast.ShowToast("HandleAdLeavingApplication event received");
         Kixlonzing.Instance.AddKixlonz(20);
+    }
+    public void HandleOnInterstitialLeavingApplication(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleInterstitialLeavingApplication event received");
+        if(TestMode) AndroidToast.ShowToast("HandleInterstitialLeavingApplication event received");
+        Kixlonzing.Instance.AddKixlonz(40);
     }
 
     public void HideBanner(){

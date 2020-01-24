@@ -49,3 +49,6 @@ crashlytics-build.properties
 
 # Google AdMob ID file
 *.adMob
+
+# Keystore
+*.keystore

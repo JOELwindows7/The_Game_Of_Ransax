@@ -15,13 +15,61 @@
    viewBox="0 0 1920 1080"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="Paralaxer.svg"
-   inkscape:export-filename="C:\Users\ASUS\Documents\starring codes\Paralaxings\Bekgron.png"
+   inkscape:export-filename="C:\Users\ASUS\Documents\starring codes\Unity Projects\Parloring_and_Macetin_2in1_OhNo\Assets\Sprites\BekgronKruna.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
      id="defs2">
+    <linearGradient
+       id="linearGradient4857"
+       inkscape:collect="always">
+      <stop
+         id="stop4847"
+         offset="0"
+         style="stop-color:#0002ff;stop-opacity:1" />
+      <stop
+         style="stop-color:#1936ff;stop-opacity:1"
+         offset="0.24074075"
+         id="stop4849" />
+      <stop
+         id="stop4851"
+         offset="0.46296299"
+         style="stop-color:#c7f61b;stop-opacity:1" />
+      <stop
+         style="stop-color:#ddd87f;stop-opacity:1"
+         offset="0.68518519"
+         id="stop4853" />
+      <stop
+         id="stop4855"
+         offset="1"
+         style="stop-color:#82ff00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4803">
+      <stop
+         style="stop-color:#0002ff;stop-opacity:1"
+         offset="0"
+         id="stop4799" />
+      <stop
+         id="stop4809"
+         offset="0.24074075"
+         style="stop-color:#1936ff;stop-opacity:1" />
+      <stop
+         style="stop-color:#c7f6ff;stop-opacity:1"
+         offset="0.46296299"
+         id="stop4811" />
+      <stop
+         id="stop4807"
+         offset="0.68518519"
+         style="stop-color:#c6ffff;stop-opacity:1" />
+      <stop
+         style="stop-color:#04ffff;stop-opacity:1"
+         offset="1"
+         id="stop4801" />
+    </linearGradient>
     <linearGradient
        inkscape:collect="always"
        id="linearGradient838">
@@ -80,6 +128,24 @@
        x2="1920"
        y2="880"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4803"
+       id="linearGradient4805"
+       x1="1000"
+       y1="1080"
+       x2="1000"
+       y2="0"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4857"
+       id="linearGradient4845"
+       gradientUnits="userSpaceOnUse"
+       x1="1000"
+       y1="1080"
+       x2="1000"
+       y2="0" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -88,11 +154,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.64"
-     inkscape:cx="1028.0511"
-     inkscape:cy="512.59409"
+     inkscape:zoom="0.45254834"
+     inkscape:cx="909.06594"
+     inkscape:cy="625.93077"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer7"
      showgrid="true"
      units="px"
      inkscape:window-width="1920"
@@ -125,7 +191,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
       </cc:Work>
@@ -147,11 +213,39 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Bekgran"
+     style="display:inline">
+    <rect
+       style="display:inline;opacity:1;fill:url(#linearGradient4845);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:25;stroke-opacity:1"
+       id="rect4797-1"
+       width="1920"
+       height="1080"
+       x="0"
+       y="0"
+       ry="1.8530299e-07" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Bekgrin"
+     style="display:none">
+    <rect
+       style="opacity:1;fill:url(#linearGradient4805);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:25;stroke-opacity:1"
+       id="rect4797"
+       width="1920"
+       height="1080"
+       x="0"
+       y="0"
+       ry="1.8530299e-07" />
+  </g>
+  <g
      inkscape:label="Bekgron"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-11.249951)"
-     style="display:inline">
+     style="display:none">
     <rect
        style="opacity:1;fill:url(#linearGradient827);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect819"
@@ -159,7 +253,7 @@
        height="1080"
        x="0"
        y="11.249951"
-       ry="1.48047e-005" />
+       ry="1.48047e-05" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -271,7 +365,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Forgron"
-     style="display:inline">
+     style="display:none">
     <rect
        style="opacity:1;fill:#0000ff;fill-opacity:0.52941165;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect895"
@@ -279,7 +373,7 @@
        height="40"
        x="0"
        y="1040"
-       ry="1.48047e-005" />
+       ry="1.48047e-05" />
     <rect
        style="opacity:1;fill:#ff00ff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect897"
@@ -287,9 +381,9 @@
        height="40"
        x="10"
        y="990"
-       ry="1.48047e-005" />
+       ry="1.48047e-05" />
     <rect
-       ry="1.48047e-005"
+       ry="1.48047e-05"
        y="990"
        x="1430"
        height="40"

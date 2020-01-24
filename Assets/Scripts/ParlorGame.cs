@@ -124,6 +124,7 @@ public class ParlorGame : MonoBehaviour
     public void BulletReload(){
         if(SelectWepon == 0){
             BulletAmmo[SelectWepon] = BulletInit[SelectWepon];
+            HitOrMiss.Instance.WeponShotReload();
         }
     }
 
@@ -218,6 +219,7 @@ public class ParlorGame : MonoBehaviour
         if(parlorSpecificUI){
             parlorSpecificUI.OverTheGame();
         }
+        HitOrMiss.Instance.EikSerkatImDedd();
         parlorSpecificUI.preemptedDialog.IsGameStarted=false;
         StopTheGameNow(false, false);
         //core.InstructStopGame(0);

@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class ChooseDVDMenu : MonoBehaviour
 {
+    //FastBug
+    public bool QuickStartNow = true;
+    public int WhichQuickstart = 0;
     //Just FUnctional COmponent
     public Button QuitButton;
     public CoreCanvas CoreCanvas;
@@ -27,6 +30,8 @@ public class ChooseDVDMenu : MonoBehaviour
         SelectMenuVersion = SpecificDVD_UI_Set.MainMenuVersion;
         SelectMenuVersion.gameObject.SetActive(true);
         CoreCanvas.LoadDVDNow();
+        Advertiser.Instance.HideBanner();
+        Advertiser.Instance.RequestBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
     }
     public void ForceMoveToScene(string SceneName)
     {
@@ -39,10 +44,15 @@ public class ChooseDVDMenu : MonoBehaviour
         SelectMenuVersion.gameObject.SetActive(false);
         CoreCanvas.UnloadDVDNow();
     }
+    void Awake(){
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(QuickStartNow){
+            InsertDVDNumber(WhichQuickstart);
+        }
     }
 
     // Update is called once per frame

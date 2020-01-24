@@ -15,17 +15,31 @@ public class AbstractSettingUI : MonoBehaviour
     public Slider VolumeLevel;
     public TMP_Dropdown ResolutionSelect;
     public TMP_Dropdown QualitySelect;
+    public TMP_Dropdown BekgronSelect;
     public Toggle FullScreenONorOFF;
+
+    public BekgronQuadScroller bekgron;
+
+    public Resolution[] ResolutionsInIt;
+
+    [SerializeField] bool ReadyToUse = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        VolumeLevel.value = PlayerPrefs.GetFloat("VolumeLevel", 0f);
-        if(PlayerPrefs.GetInt("FullScreenONorOFF", 1) == 1){
-            FullScreenONorOFF.isOn = true;
-        } else {
-            FullScreenONorOFF.isOn = false;
-        }
+        
+    }
+
+    void Awake(){
+        GetResolution();
+        GetVolume();
+        GetFullScreen();
+        GetQuality();
+        GetFullScreen();
+        GetBekgronType();
+
+        ReadyToUse = true;
+        IMeanLoadResolutionSetting();
     }
 
     // Update is called once per frame
@@ -42,9 +56,86 @@ public class AbstractSettingUI : MonoBehaviour
             audioMixer.SetFloat("ExposedMasterVolume", volume);
         }
     }
+    public void GetVolume(){
+        float Volumein = PlayerPrefs.GetFloat("VolumeLevel", 0f);
+        VolumeLevel.value = Volumein;
+        // if(audioMixer){
+        //     audioMixer.SetFloat("ExposedMasterVolume", Volumein);
+        // }
+    }
 
     public void SetQuality (int index){
-        
+        QualitySettings.SetQualityLevel(index);
+        if(ReadyToUse) PlayerPrefs.SetInt("QualitySettings", index);
+    }
+    public void GetQuality(){
+        QualitySelect.value = PlayerPrefs.GetInt("QualitySettings", 0);
+    }
+
+    public void SetFullScreen(bool statement){
+        Screen.fullScreen = statement;
+        if(ReadyToUse) PlayerPrefs.SetInt("FullScreenONorOFF", statement? 1 : 0);
+    }
+    public void GetFullScreen(){
+        if(PlayerPrefs.GetInt("FullScreenONorOFF", 1) == 1){
+            FullScreenONorOFF.isOn = true;
+        } else {
+            FullScreenONorOFF.isOn = false;
+        }
+    }
+
+    public int totalResolutionIndex;
+    public void SetResolution(int index){
+        Resolution resolution = ResolutionsInIt[index];
+
+        if(ReadyToUse){
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+            PlayerPrefs.SetInt("ResolutionIndex", index);
+        }
+    }
+    public void GetResolution(){
+        ResolutionsInIt = Screen.resolutions;
+
+        ResolutionSelect.ClearOptions();
+
+        List<string> ResolutionStrings = new List<string>();
+        int currentResolutionIndex = 0;
+        for(int i=0;i<ResolutionsInIt.Length;i++){
+            string option = ResolutionsInIt[i].width + " x " + ResolutionsInIt[i].height;
+            ResolutionStrings.Add(option);
+
+            if(ResolutionsInIt[i].width == Screen.currentResolution.width && ResolutionsInIt[i].height == Screen.currentResolution.height){
+                currentResolutionIndex = i;
+                totalResolutionIndex = i;
+            }
+        }
+        ResolutionSelect.AddOptions(ResolutionStrings);
+        ResolutionSelect.value = currentResolutionIndex;
+        ResolutionSelect.RefreshShownValue();
+    }
+
+    public void IMeanLoadResolutionSetting(){
+        ResolutionSelect.value = PlayerPrefs.GetInt("ResolutionIndex", totalResolutionIndex);
+        // if(!Application.isMobilePlatform){
+        //     if(PlayerPrefs.GetInt("ResolutionEverBeenPlay", 0) == 0){
+                
+        //         PlayerPrefs.SetInt("ResoltionInEverBeenPlay", 1);
+        //         SaveSetting();
+        //     } else {
+        //     }
+        // }
+    }
+
+    public int BekgronIndexi;
+    public void SetBekgronType(int indexi){
+        BekgronIndexi = indexi;
+        bekgron.SetMaterial(BekgronIndexi);
+
+        if(ReadyToUse) PlayerPrefs.SetInt("BekgronIndex", BekgronIndexi);
+    }
+    public void GetBekgronType(){
+        BekgronIndexi = PlayerPrefs.GetInt("BekgronIndex", 0);
+        BekgronSelect.value = BekgronIndexi;
     }
 
     public void SaveSetting(){

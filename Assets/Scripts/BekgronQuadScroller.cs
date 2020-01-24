@@ -7,6 +7,8 @@ public class BekgronQuadScroller : MonoBehaviour
 {
     public ParlorGame engineSelf;
     public AudioClip soundFile;
+    public Material[] materialSelectList;
+    public int materialIndex;
     [SerializeField] Material materialingBekgron;
     [SerializeField] Vector2 offseting;
 
@@ -41,6 +43,13 @@ public class BekgronQuadScroller : MonoBehaviour
         materialingBekgron.mainTextureOffset += offseting * Time.deltaTime;
     }
 
+    public void SetMaterial(int indexi){
+        materialIndex = indexi;
+        materialingBekgron = materialSelectList[materialIndex];
+
+        GetComponent<MeshRenderer>().material = materialSelectList[materialIndex];
+    }
+
     private void MissHit(){
         // if(engineSelf){
         //     if(engineSelf.BulletAmmo1 > 0){
@@ -52,11 +61,14 @@ public class BekgronQuadScroller : MonoBehaviour
         //     }
         // }
         if(HitOrMiss.Instance.BulletAmmoNumber > 0f){
-            if(soundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
+            HitOrMiss.Instance.WeponShotSound();
+            if(soundFile && engineSelf.HasGameStarted) ExternalSpeaker.Instance.FlashSoundEffect(soundFile);
             else {
             
             }
             HitOrMiss.Instance.Miss(); //Huh
+        } else {
+            HitOrMiss.Instance.WeponShotEmpty();
         }
     }
 

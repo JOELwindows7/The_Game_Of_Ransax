@@ -33,6 +33,7 @@ public class TargetShootBehaviour : MonoBehaviour
         if(HitOrMiss.Instance.BulletAmmoNumber > 0f){
             Destroy(gameObject);
             if(soundFile && PlaySoundFile) ExternalSpeaker.Instance.FlashSoundEffect(soundFile, VolumeOut);
+            HitOrMiss.Instance.WeponShotSound();
             if(PlayMultiAtOnce){
                 foreach(AudioClip sounds in MultiSoundFilesAtOnce){
                     if(sounds) ExternalSpeaker.Instance.FlashSoundEffect(sounds,VolumeOut);
@@ -49,6 +50,7 @@ public class TargetShootBehaviour : MonoBehaviour
             HitOrMiss.Instance.Hit();
         }
         else {
+            HitOrMiss.Instance.WeponShotEmpty();
             Debug.Log("Out of Ammo!");
         }
     }

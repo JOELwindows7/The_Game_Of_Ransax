@@ -98,6 +98,9 @@ public class AbstractUISet : MonoBehaviour
         if (AbstractCreditUI){
             AbstractCreditUI.gameObject.SetActive(false);
         }
+        if(AbstractSettingUI){
+            AbstractSettingUI.gameObject.SetActive(false);
+        }
         if(AbstractInstructionUI){
             AbstractInstructionUI.gameObject.SetActive(false);
         }

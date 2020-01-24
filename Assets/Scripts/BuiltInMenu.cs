@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuiltInMenu : MonoBehaviour
 {
+    public bool ImmediatelyQuit = true;
     [SerializeField] int GameIndexIsRightNow = 0;
     public ChooseDVDMenu ChooseDvdMenu;
     public CoreCanvas coreCanvas;
@@ -22,7 +23,8 @@ public class BuiltInMenu : MonoBehaviour
     public void PressQuitButton()
     {
         //ChooseDvdMenu.EjectDVDNumber();
-        coreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.ChangeDVD);
+        if(!ImmediatelyQuit) coreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.ChangeDVD);
+        else coreCanvas.InvokeAreYouSureDialog(AreYouSureDialog.ConfirmsList.Shutdown);
     }
 
     public void PressInstructionButtion(int GameIndex){

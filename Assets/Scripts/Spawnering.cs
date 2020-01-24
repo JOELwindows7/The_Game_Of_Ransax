@@ -18,6 +18,9 @@ public class Spawnering : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(useRandom){
+            SpawnEverySecond = Random.Range(minRandom,maxRandom);
+        }
         SpawnAgainTimer = SpawnEverySecond;
     }
 
