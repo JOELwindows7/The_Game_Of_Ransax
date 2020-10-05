@@ -9,12 +9,18 @@ public class AreYouSureDialog : MonoBehaviour
     public TextMeshProUGUI DialogSays;
     public string toDoSomething = "Shutdown Hexagon Unity Framework";
     public CoreCanvas CoreCanvas;
-    public enum ConfirmsList { Shutdown, ChangeDVD, BackToMenu};
+    public Toggle setAdDestroyToggler;
+    public enum ConfirmsList { Shutdown, ChangeDVD, BackToMenu, EnableAd};
     public ConfirmsList AreYouSureTo;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void spawnMessagefor(ConfirmsList confirmer){
+        AreYouSureTo = confirmer;
+        gameObject.SetActive(true);
     }
 
     public void PressYesButton()
@@ -40,14 +46,33 @@ public class AreYouSureDialog : MonoBehaviour
                     CoreCanvas.GoBackToMainMenu();
                 }
                 break;
+            case ConfirmsList.EnableAd:
+                if(setAdDestroyToggler){
+                    
+                }
+                
+                Advertiser.Instance.isAdActuallyDisabled = false;
+                PlayerPrefs.SetInt("DestroyTheAds", 0);
+                Advertiser.Instance.ReinitializeAds();
+                break;
             default:
                 
                 break;
         }
+        gameObject.SetActive(false);
     }
 
     public void PressNoButton()
     {
+        switch(AreYouSureTo){
+            case ConfirmsList.EnableAd:
+                if(setAdDestroyToggler){
+                    setAdDestroyToggler.isOn = true;
+                }
+                break;
+            default:
+                break;
+        }
         gameObject.SetActive(false);
     }
 
@@ -64,6 +89,9 @@ public class AreYouSureDialog : MonoBehaviour
                 break;
             case ConfirmsList.BackToMenu:
                 toDoSomething = "Quit to Menu";
+                break;
+            case ConfirmsList.EnableAd:
+                toDoSomething = "Enable Ad \n(Not Recommended! AdMob & some ad plugins collects your private data wildly!)";
                 break;
             default:
                 toDoSomething = "Something";

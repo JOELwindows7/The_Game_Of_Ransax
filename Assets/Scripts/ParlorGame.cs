@@ -96,6 +96,10 @@ public class ParlorGame : MonoBehaviour
             parlorSpecificUI.HiScoredNumber = InGameHiScore;
             parlorSpecificUI.CurrentHiScored = HiScoreFirst;
         }
+
+        if(Input.GetMouseButtonUp(1)){
+            BulletReload();
+        }
     }
 
     public void ResetObjects()

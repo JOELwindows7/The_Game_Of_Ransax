@@ -29,6 +29,7 @@ https://www.freepik.com/free-vector/isolated-nature-decor_3875002.htm#page=1&que
 https://www.freepik.com/free-vector/seamless-scene-with-trees-park_4866970.htm#page=1&query=garden%20seamless
 https://www.freepik.com/free-vector/seamless-scene-with-trees-park_4866970.htm
 (Assets that lose credit may be removed even to the source code. If you finally found credit, please immediately send to @JOELwindows7 , to prevent them from being thrown away)
+https://www.sindenlightgun.com/ Sinden Lightgun mousing! Modern Lightgun that works on latency displays like LCD! No API needed! 
 
 Reference:
 https://support.unity3d.com/hc/en-us/articles/115000341143-How-do-I-read-and-write-data-from-a-text-file-
@@ -53,6 +54,14 @@ https://forum.unity.com/threads/open-external-files.25561/
 https://stackoverflow.com/questions/8714197/c-sharp-streamreader-save-to-array-with-separator
 https://stackoverflow.com/questions/24402836/how-to-integrate-admob-interstitial-in-unity
 https://en.wikipedia.org/wiki/Unity_(game_engine)
+https://www.youtube.com/watch?v=CAvVOjOWaxk&t=1359s How to setup Sinden Lightgun on Mame; 
+The driver software of the lightgun has keymap feature! Adjust them with following:
+Onscreen:
+- Trigger = Left Click
+- Pump Action = Right Click
+OffScreen:
+- Trigger = Right Click
+- Pump Action = Right click
 
 https://freesound.org/people/JOELwindows7/downloaded_sounds/
 

@@ -9,6 +9,8 @@ public class AbstractSettingUI : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=YOaYQrN1oYQ
     //Brackeys!!!
+    //RIP Brackeys Unity tutorial, 2020. no, the person himself is still alive.
+    //the Brackeys seems completed idk.
 
     public AudioMixer audioMixer;
 
@@ -18,6 +20,8 @@ public class AbstractSettingUI : MonoBehaviour
     public TMP_Dropdown BekgronSelect;
     public Toggle FullScreenONorOFF;
 
+    public Toggle DestroyTheAdOnorOff;
+    public AreYouSureDialog areYouSureDialog; //Damn, I should have been set it as Singleton.
     public BekgronQuadScroller bekgron;
 
     public Resolution[] ResolutionsInIt;
@@ -34,6 +38,7 @@ public class AbstractSettingUI : MonoBehaviour
         GetResolution();
         GetVolume();
         GetFullScreen();
+        GetAdDestroyer();
         GetQuality();
         GetFullScreen();
         GetBekgronType();
@@ -81,6 +86,29 @@ public class AbstractSettingUI : MonoBehaviour
             FullScreenONorOFF.isOn = true;
         } else {
             FullScreenONorOFF.isOn = false;
+        }
+    }
+
+    public void SetAdDestroyer(bool statement){
+        if(statement){
+            Advertiser.Instance.isAdActuallyDisabled = statement;
+            PlayerPrefs.SetInt("DestroyTheAds", statement? 1 : 0);
+        } else {
+            if(areYouSureDialog){
+                areYouSureDialog.spawnMessagefor(AreYouSureDialog.ConfirmsList.EnableAd);
+            }
+        }
+
+        //Advertiser.Instance.isAdActuallyDisabled = statement;
+        //PlayerPrefs.SetInt("DestroyTheAds", statement? 1 : 0);
+    }
+    public void GetAdDestroyer(){
+        if(PlayerPrefs.GetInt("DestroyTheAds", 1) == 1){
+            DestroyTheAdOnorOff.isOn = true;
+            Advertiser.Instance.isAdActuallyDisabled = true; //Make sure it's destroyed
+        } else{
+            Advertiser.Instance.isAdActuallyDisabled = false;
+            DestroyTheAdOnorOff.isOn = false;
         }
     }
 

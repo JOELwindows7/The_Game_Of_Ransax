@@ -9,6 +9,8 @@ using System.IO;
 
 public class Advertiser : Singleton<Advertiser>
 {
+    public bool isAdActuallyDisabled = true;
+
     /*
     Unity Ads
     */
@@ -52,6 +54,29 @@ public class Advertiser : Singleton<Advertiser>
         }
         
     }
+    void InitializeAds(){
+        //Advertisement.Initialize(GameId,TestMode);
+        //Monetization.Initialize(GameId,TestMode);
+        MobileAds.Initialize(GoogleAppID);
+
+        //Request Google Ad banner now!
+        RequestBanner(AdPosition.BottomLeft);
+        RequestInterstitial(); 
+    }
+    public void ReinitializeAds(){
+        MobileAds.Initialize(GoogleAppID);
+        RequestInterstitial();
+    }
+    IEnumerator BufferedInitAd()
+    {
+        yield return new WaitForSeconds(5f);
+        if(!isAdActuallyDisabled){
+            InitializeAds();
+        } else {
+            Debug.Log("Cool and good. Ad is disabled. https://cointr.ee/joelwindows7");
+            Kixlonzing.Instance.AddKixlonz(100);
+        }
+    }
     void Start()
     {
         AdMobFilePath = Application.streamingAssetsPath + "/AdMob/adMob_id.adMob";
@@ -80,13 +105,9 @@ public class Advertiser : Singleton<Advertiser>
             }
         }
 
-        //Advertisement.Initialize(GameId,TestMode);
-        Monetization.Initialize(GameId,TestMode);
-        MobileAds.Initialize(GoogleAppID);
-
-        //Request Google Ad banner now!
-        RequestBanner(AdPosition.BottomLeft);
-        RequestInterstitial(); 
+        // https://stackoverflow.com/questions/53478857/how-to-add-a-delay-in-a-c-sharp-unity-script
+        // https://docs.unity3d.com/ScriptReference/WaitForSeconds.html
+        StartCoroutine(BufferedInitAd());
     }
 
     // Update is called once per frame
@@ -102,26 +123,36 @@ public class Advertiser : Singleton<Advertiser>
     public void ShowAd () {
         Debug.Log("Ad Attempted");
 
-        ChanceAd = UnityEngine.Random.Range(0f,10f);
+        if(!isAdActuallyDisabled){
+            ChanceAd = UnityEngine.Random.Range(0f,10f);
 
-        if(ChanceAd > 5f && !NoRelyUnityAds){
-            if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (false));
-            else ExperimentAdvertiser.Instance.ShowAd();
+            if(ChanceAd > 5f && !NoRelyUnityAds){
+                if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (false));
+                else ExperimentAdvertiser.Instance.ShowAd();
+            } else {
+                ShowAd_Interstitial();
+            }
         } else {
-            ShowAd_Interstitial();
+            Debug.Log("Ad is disabled. Cool and good. https://cointr.ee/joelwindows7");
+            Kixlonzing.Instance.AddKixlonz(20);
         }
     }
 
     public void ShowAd_Rewarded () {
         Debug.Log("Ad Reward Attempted");
 
-        ChanceAd = UnityEngine.Random.Range(0f,10f);
+        if(!isAdActuallyDisabled){
+            ChanceAd = UnityEngine.Random.Range(0f,10f);
 
-        if(ChanceAd > 5f && !NoRelyUnityAds){
-            if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (true));
-            else ExperimentAdvertiser.Instance.ShowAd(true);
+            if(ChanceAd > 5f && !NoRelyUnityAds){
+                if(!UseTheNewUnityAds) StartCoroutine (WaitForAd (true));
+                else ExperimentAdvertiser.Instance.ShowAd(true);
+            } else {
+                ShowAd_InterstitialRewarded();
+            }
         } else {
-            ShowAd_InterstitialRewarded();
+            Debug.Log("Ad Rewarded is disabled. Cool and good. https://cointr.ee/joelwindows7");
+            Kixlonzing.Instance.AddKixlonz(25);
         }
     }
 
@@ -236,6 +267,11 @@ public class Advertiser : Singleton<Advertiser>
     [SerializeField] AdPosition adPosition = AdPosition.BottomLeft;
 
     public void RequestBanner(){
+        if(isAdActuallyDisabled) {
+            Debug.Log("Banner Disabled. Cool and good. https://cointr.ee/joelwindows7");
+            return;
+        }
+
         //bannerAppID is ad unit ID
         if(Application.platform == RuntimePlatform.Android){
             bannerAppID = TestMode? "ca-app-pub-3940256099942544/6300978111" : DissectbannerUnitID;
